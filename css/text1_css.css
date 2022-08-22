@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+
+
+@media (min-width: 576px) { 
+
+    body{
+
+        background-color:white !important;
+    }
+
+
+
+ } 
+
+body
+{
+    background-color: black;
+}
+#list
+{
+    list-style-type: none;
+    color: #000000;
+    height: 35px;
+    margin-left: 85%;
+
+}
+li
+{
+    font-size: 10pt;
+    float: left;
+    text-align: center;
+    margin-right: 8%;
+}
+@media (max-width: 1200px)
+{
+    #list
+    {
+        list-style-type: none;
+        color: #000000;
+        height:35px;
+        margin-left: 75%;
+    }
+
+}
+#profile
+{
+    width: 30pt;
+    position: absolute;
+    top: 1%;
+}
+.icon
+{
+    width: 60px;
+    margin: auto;
+}
+.icon_table
+{
+    width: 100px;
+    text-align: center;
+}
+.icon_name
+{
+    font-size: 10pt;
+    color: #000000;
+    margin-right: 50pt;
+    text-align: center;
+}
+.icon_name:hover
+{
+    text-decoration: underline;
+}
+table
+{
+    margin: auto;
+}   
+#logo
+{
+    top: 350px;
+    text-align: center;
+    margin-bottom: 22pt;
+    margin-top: 115px;
+}
+#logo_img
+{
+    width: 275px;
+}
+@media (max-width:1024px)
+{
+    #logo_img
+    {
+        width: 200px;
+    }
+}
+#input
+{
+    text-align: left ;
+    font-size: 12pt;
+    width: 33%;
+    height: 101%;
+    border: none;
+    outline: none;
+}
+#input:focus
+{
+    box-shadow: 3px 3px 3px #9e9e9e;
+}
+.container
+{
+    position: fixed;
+    z-index: -1;
+    width: 600px;
+    height: 200px;
+    margin: auto;
+    border: 1px black;
+    margin-left: 460px;
+    background-color: #ffffff;
+    opacity: 0;
+}
+#search
+{
+    text-align: center;
+    background-image: url(../images/search_icon.png), url(../images/mic_icon.png);
+    background-position: 32% center, 68% center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    width: 100%;
+    height: 40px;
+}
+a
+{
+    text-decoration: none;
+    color: inherit;
+}
+.list_link:hover
+{
+    text-decoration: underline;
+}
+.img_btn:hover
+{
+    background-color: #9e9e9e;
+}
+.icon_table:hover
+{
+    background-color: #9e9e9e;
+}
+/*input:focus
+{
+    background-color: #000000;
+}
+*/
