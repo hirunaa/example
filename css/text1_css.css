@@ -141,6 +141,10 @@ a
 {
     background-color: #9e9e9e;
 }
+#profile:hover
+{
+    background-color: #9e9e9e;
+}
 .icon_table:hover
 {
     background-color: #9e9e9e;
@@ -150,3 +154,10 @@ a
     background-color: #000000;
 }
 */
+
+
+.onFocus{
+    border: 1px solid;
+    opacity: 1;
+    z-index: 999;
+}
