@@ -103,7 +103,7 @@ table
 }
 #input:focus
 {
-    box-shadow: 3px 3px 3px #9e9e9e;
+    box-shadow: 0 0 4px #9e9e9e;
 }
 .container
 {
@@ -113,7 +113,7 @@ table
     height: 200px;
     margin: auto;
     border: 1px black;
-    margin-left: 460px;
+    margin-left: 455px;
     background-color: #ffffff;
     opacity: 0;
 }
