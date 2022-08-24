@@ -25,7 +25,7 @@ body
     margin-left: 85%;
 
 }
-li
+ul#list li
 {
     font-size: 10pt;
     float: left;
@@ -105,18 +105,19 @@ table
 {
     box-shadow: 0 0 4px #9e9e9e;
 }
-.container
+.keywordsBox
 {
-    position: fixed;
+    position: absolute;
     z-index: -1;
-    width: 600px;
-    height: 200px;
+    width: 40%;
+    height: auto;
+    left: 30%;
     margin: auto;
     border: 1px black;
-    margin-left: 455px;
     background-color: #ffffff;
     opacity: 0;
 }
+
 #search
 {
     text-align: center;
@@ -149,15 +150,17 @@ a
 {
     background-color: #9e9e9e;
 }
-/*input:focus
+#search_keywords
 {
-    background-color: #000000;
+    position: relative;
+    list-style-type: none;
+    border-bottom: 20px;
+    opacity: 0;
+    z-index: -2;
 }
-*/
-
 
 .onFocus{
     border: 1px solid;
     opacity: 1;
-    z-index: 999;
+    z-index: 1;
 }
