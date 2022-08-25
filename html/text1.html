@@ -6,7 +6,6 @@
         <link rel="stylesheet" type="text/css" href="../css/text1_css.css">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script type="text/javascript" src="../js/text1.js"></script>
-
     </head>
     <body>
         <!--윗쪽 네비게이션 바 부분-->
@@ -25,9 +24,11 @@
             <input name="q" type="search" required placeholder="Google검색 또는 URL입력" autocomplete="off" maxlength=90 id="input">
         </form>
         <div class="keywordsBox">
-            <ul id="search_keywords">
-                <li class="keywords"><p class="keywordName">유튜브</p></li>
-            </ul>
+            <div class="showKeywords">
+                <ul id="search_keywords">
+                    <li class="keywords"><p class="keywordName">유튜브</p></li>
+                </ul>
+            </div>
         </div>
         <br>
         <!--바로가기 아이콘-->

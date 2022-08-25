@@ -40,18 +40,19 @@ $( document ).ready(function() {
     // input창에 "유"입력 시 연관검색어 출력. 글자를 지울 경우 리스트 삭제
     
     let recomList = ["유튜브 프리미엄","유튜브 미리보기","유튜브 검색하는 법"];
-    var searchkeywords = document.getElementById("#search_keywords");
-
+    //var search_keywords = $(".showKeywords");
+    var search_keywords = $("#search_keywords");
     function keywordsList()
     {
         for(var i=0; i<recomList.length; i++)
         {
-            console.log(i);
-            keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
-            keywordsContainer = document.getElementById("search_keywords");
+            //console.log(i);
+            var keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
+            var keywordsContainer = document.getElementById("search_keywords");
 
             keywords.querySelector(".keywordName").innerText=recomList[i];
             keywordsContainer.appendChild(keywords);
+            console.log(keywords);
         }
     }
 
@@ -70,20 +71,21 @@ $( document ).ready(function() {
         console.log("keyup");
         rmkeywords();
         var searchValue = document.getElementById("input").value;
-        if(searchValue.indexOf("유")!=-1)
-        {
-            console.log("ㅇㅇ");
-            keywordsList();
-            search_keywords.style.opacity="1";
-            search_keywords.style.zIndex="2";
-            
-        }
-        else
-        {
-            console.log("ㄴㄴ");
-            search_keywords.style.opacity="0";
-            search_keywords.style.zIndex="-2";
-            
+        window.onload = function(){
+            console.log("asdfasdf");
+            if(searchValue.indexOf("유")!=-1)
+            {
+                console.log("ㅇㅇ");
+                keywordsList();
+                //search_keywords.addClass("onKeyup");
+                search_keywords.attr("id", "onKeyup");
+            }
+            else
+            {
+                console.log("ㄴㄴ");
+                //search_keywords.removeClass("onKeyup");
+                search_keywords.removeAttr("id", "onKeyup");
+            }
         }
         
     }
