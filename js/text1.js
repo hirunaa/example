@@ -40,7 +40,7 @@ $( document ).ready(function() {
     // input창에 "유"입력 시 연관검색어 출력. 글자를 지울 경우 리스트 삭제
     
     let recomList = ["유튜브 프리미엄","유튜브 미리보기","유튜브 검색하는 법"];
-    var searchkeywords = $("#search_keywords");
+    var searchkeywords = document.getElementById("#search_keywords");
 
     function keywordsList()
     {
@@ -74,16 +74,16 @@ $( document ).ready(function() {
         {
             console.log("ㅇㅇ");
             keywordsList();
-            //search_keywords.style.opacity="1";
-            //search_keywords.style.zIndex="2";
-            searchkeywords.attr("");
+            search_keywords.style.opacity="1";
+            search_keywords.style.zIndex="2";
+            
         }
         else
         {
             console.log("ㄴㄴ");
-            //search_keywords.style.opacity="0";
-            //search_keywords.style.zIndex="-2";
-            searchkeywords.removeAttr("");
+            search_keywords.style.opacity="0";
+            search_keywords.style.zIndex="-2";
+            
         }
         
     }
