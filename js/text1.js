@@ -33,12 +33,15 @@ $( document ).ready(function() {
         iconbox.appendChild(iconList);
         iconName.querySelector(".siteName").innerText=site_name[i];
         iconNamebox.appendChild(iconName);
-
+        
         
         
     }
+    // input창에 "유"입력 시 연관검색어 출력. 글자를 지울 경우 리스트 삭제
+    
     let recomList = ["유튜브 프리미엄","유튜브 미리보기","유튜브 검색하는 법"];
-    var search_keywords = document.getElementById("search_keywords");
+    var searchkeywords = $("#search_keywords");
+
     function keywordsList()
     {
         for(var i=0; i<recomList.length; i++)
@@ -52,22 +55,35 @@ $( document ).ready(function() {
         }
     }
 
+    function rmkeywords()
+    {
+        var rmlist = document.querySelectorAll(".keywords");
+        for(var i=1; i<rmlist.length; i++)
+        {
+            rmlist[i].remove();
+        }
+    }
+
+
     searchInput.onkeyup=function()
     {
         console.log("keyup");
+        rmkeywords();
         var searchValue = document.getElementById("input").value;
         if(searchValue.indexOf("유")!=-1)
         {
             console.log("ㅇㅇ");
             keywordsList();
-            search_keywords.style.opacity="1";
-            search_keywords.style.zIndex="2";
+            //search_keywords.style.opacity="1";
+            //search_keywords.style.zIndex="2";
+            searchkeywords.attr("");
         }
         else
         {
             console.log("ㄴㄴ");
-            search_keywords.style.opacity="0";
-            search_keywords.style.zIndex="-2";
+            //search_keywords.style.opacity="0";
+            //search_keywords.style.zIndex="-2";
+            searchkeywords.removeAttr("");
         }
         
     }
