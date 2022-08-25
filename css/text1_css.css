@@ -25,6 +25,16 @@ body
     margin-left: 85%;
 
 }
+@media (max-width: 740px)
+{
+    #list
+    {
+        list-style-type: none;
+        color: #000000;
+        height: 35px;
+        margin-left: 70%;
+    }
+}
 ul#list li
 {
     font-size: 10pt;
@@ -133,23 +143,28 @@ a
 .list_link:hover
 {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .img_btn:hover
 {
     background-color: #9e9e9e;
+    cursor: pointer;
 }
 .siteName:hover
 {
     text-decoration: underline;
+    
 }
 #profile:hover
 {
     background-color: #9e9e9e;
+    cursor: pointer;
 }
 .icon_table:hover
 {
     background-color: #9e9e9e;
+    cursor: pointer;
 }
 #search_keywords
 {

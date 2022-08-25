@@ -72,12 +72,16 @@ $( document ).ready(function() {
             console.log("ㅇㅇ");
             keywordsList();
             search_keywords.addClass("onKeyup");
+            //search_keywords.style.opacity="1";
+            //search_keywords.style.zIndex="2";
             //search_keywords.attr("id", "onKeyup");
         }
         else
         {
             console.log("ㄴㄴ");
             search_keywords.removeClass("onKeyup");
+            //search_keywords.style.opacity="0";
+            //search_keywords.style.zIndex="-2";
             //search_keywords.removeAttr("id", "onKeyup");
         }
         
