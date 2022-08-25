@@ -37,6 +37,7 @@ $( document ).ready(function() {
     
     let recomList = ["유튜브 프리미엄","유튜브 미리보기","유튜브 검색하는 법"];
     var search_keywords = $(".showKeywords");
+    //var search_keywords= document.getElementsByClassName("showKeywords")[0];
     //var search_keywords = $("search_keywords");
     function keywordsList()
     {
@@ -45,7 +46,7 @@ $( document ).ready(function() {
             //console.log(i);
             var keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
             var keywordsContainer = document.getElementById("search_keywords");
-
+            
             keywords.querySelector(".keywordName").innerText=recomList[i];
             keywordsContainer.appendChild(keywords);
         }
