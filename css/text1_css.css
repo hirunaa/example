@@ -59,12 +59,9 @@ ul#list li
     width: 100px;
     text-align: center;
 }
-.icon_name
+.siteName
 {
     font-size: 10pt;
-    color: #000000;
-    margin-right: 50pt;
-    text-align: center;
 }
 .icon_name:hover
 {
@@ -142,6 +139,10 @@ a
 {
     background-color: #9e9e9e;
 }
+.siteName:hover
+{
+    text-decoration: underline;
+}
 #profile:hover
 {
     background-color: #9e9e9e;
@@ -167,17 +168,18 @@ a
     opacity: 1;
     z-index: 1;
 }
-/*
+
 .onKeyup
 {
     opacity: 1;
     z-index: 2;
 }
-*/
 
+/*
 #onKeyup
 {
     list-style-type: none;
     opacity: 1;
     z-index: 2;
 }
+*/
