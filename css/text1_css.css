@@ -18,7 +18,7 @@ body
     background-color: black;
 }
 #list
-{
+{   
     list-style-type: none;
     color: #000000;
     height: 35px;
@@ -183,7 +183,7 @@ a
     opacity: 1;
     z-index: 1;
 }
-
+/*
 .onKeyup
 {
     opacity: 1;
