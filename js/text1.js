@@ -92,13 +92,14 @@ $(document).ready(function () {
                 //search_keywords.removeAttr("id", "onKeyup");
             }*/
         }
+        var inputText=document.getElementById("input");
         var keyNames = document.querySelectorAll(".keywordName");
         for (const keyName of keyNames) {
             keyName.addEventListener('click', function (event) {
                 
                 index = [].slice.call(keyNames).indexOf(keyName);
                 searchText = keyNames[index].innerText;
-                document.getElementById("input").value = searchText;
+                inputText.value = searchText;
             })
         }
 
