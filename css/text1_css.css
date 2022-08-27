@@ -171,6 +171,8 @@ a
     position: relative;
     list-style-type: none;
     border-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
     
 }
 .showKeywords
@@ -185,7 +187,8 @@ a
 }
 .keywordName:hover
 {
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: default;
 }
 /*
 .onKeyup
