@@ -183,6 +183,10 @@ a
     opacity: 1;
     z-index: 1;
 }
+.keywordName:hover
+{
+    background-color: #000000;
+}
 /*
 .onKeyup
 {

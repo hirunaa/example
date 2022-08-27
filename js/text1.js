@@ -103,11 +103,13 @@ $( document ).ready(function() {
         }
         
     }
-    //keyup
-    //indexOf
-    // '유'를 다 쳤을 때 밑에 검색어 리스트 모두 렌더
-    // 검색창에 글씨를 다 지웠을 때 리스트 모두 삭제
-    
+    var li_val = document.getElementsByClassName("keywordName");
+    for(var i = 0; i<li_val.length; i++)
+    {
+        li_val[i].addEventListener('click',function(){
+            console.log("wrkxdmsrhwp");
+        });
+    }
 
 
 
