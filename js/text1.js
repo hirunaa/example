@@ -10,7 +10,7 @@ $(document).ready(function () {
         container.addClass("onFocus");
     }
     searchInput.onblur = function() {
-        container.removeClass("onFocus");
+       // container.removeClass("onFocus");
     }
     /*
     keywordfocus.onmouseleave = function() {
@@ -35,7 +35,7 @@ $(document).ready(function () {
     }
     // input창에 "유"입력 시 연관검색어 출력. 글자를 지울 경우 리스트 삭제
 
-    let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법", "이게 되누", "몰?루", "아!루", "오야뿡"];
+    let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법", "물리2", "몰?루", "아!루", "리눅스"];
     var search_keywords = document.getElementsByClassName("showKeywords")[0];
     //var search_keywords = $(".showKeywords");
     //var search_keywords = $("search_keywords");
