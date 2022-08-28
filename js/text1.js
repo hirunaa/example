@@ -5,17 +5,24 @@ $(document).ready(function () {
     var searchInput = document.getElementById("input");
     // var container= document.getElementsByClassName("container")[0];
     var container = $(".keywordsBox");
+    var keywordfocus = document.getElementsByClassName("keywordsBox")[0];
     searchInput.onfocus = function () {
         // container.style.border="1px solid #000000";
         // container.style.opacity="1";
         // container.style.zIndex="1";
         container.addClass("onFocus");
     }
-    searchInput.onblur = function () {
-        // container.style.border="0px solid #000000";
-        // container.style.opacity="0";
-        // container.style.zIndex="-1";
-        //container.removeClass("onFocus");
+    keywordfocus.onmouseleave = function() {
+        console.log("내가 바로 니 오야 뿡!이다!! 으아으!!");
+        searchInput.onblur = function () {
+            container.removeClass("onFocus");
+            console.log("양심껏 해라 쫌");
+            // container.style.border="0px solid #000000";
+            // container.style.opacity="0";
+            // container.style.zIndex="-1";
+            //  container.removeClass("onFocus");
+        }
+        return;
     }
 
     var icon_src = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
@@ -80,17 +87,6 @@ $(document).ready(function () {
                 search_keywords.style.zIndex = "2";
                 //search_keywords.attr("id", "onKeyup");
             }
-
-            /*
-            else
-            {
-                console.log("ㄴㄴ");
-                //search_keywords.removeClass("onKeyup");
-                //rmkeywords();
-                search_keywords.style.opacity="0";
-                search_keywords.style.zIndex="-2";
-                //search_keywords.removeAttr("id", "onKeyup");
-            }*/
         }
         var inputText=document.getElementById("input");
         var keyNames = document.querySelectorAll(".keywordName");
@@ -100,9 +96,9 @@ $(document).ready(function () {
                 index = [].slice.call(keyNames).indexOf(keyName);
                 searchText = keyNames[index].innerText;
                 inputText.value = searchText;
+                document.getElementById("search").submit();
             })
         }
-
     }
     /*
     $(document).on('click',"#search_keywords li", function(){
