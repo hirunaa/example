@@ -7,23 +7,17 @@ $(document).ready(function () {
     var container = $(".keywordsBox");
     var keywordfocus = document.getElementsByClassName("keywordsBox")[0];
     searchInput.onfocus = function () {
-        // container.style.border="1px solid #000000";
-        // container.style.opacity="1";
-        // container.style.zIndex="1";
         container.addClass("onFocus");
     }
+    searchInput.onblur = function() {
+        container.removeClass("onFocus");
+    }
+    /*
     keywordfocus.onmouseleave = function() {
-        console.log("내가 바로 니 오야 뿡!이다!! 으아으!!");
         searchInput.onblur = function () {
             container.removeClass("onFocus");
-            console.log("양심껏 해라 쫌");
-            // container.style.border="0px solid #000000";
-            // container.style.opacity="0";
-            // container.style.zIndex="-1";
-            //  container.removeClass("onFocus");
         }
-        return;
-    }
+    }*/
 
     var icon_src = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
     var site_name = ["Instagram", "Chrome", "add"];
@@ -93,33 +87,13 @@ $(document).ready(function () {
         for (const keyName of keyNames) {
             keyName.addEventListener('click', function (event) {
                 
-                index = [].slice.call(keyNames).indexOf(keyName);
+                index = [].slice.call(keyNames).indexOf(keyName); //유사배열..
                 searchText = keyNames[index].innerText;
                 inputText.value = searchText;
                 document.getElementById("search").submit();
             })
         }
     }
-    /*
-    $(document).on('click',"#search_keywords li", function(){
-        console.log("내가 니 오야뿡!이다! 으아으!");
-        var li_val=$("#search_keywords li");
-        console.log(li_val[1].textContent);
-    });
-    /*
-    $(".keywords").click(function(){
-        console.log("내가 니 오야뿡!이다! 으아으!");
-        var li_val =$("#search_keywords li");
-        console.log($(this).index())
-    })
-    /*
-    var li_val = document.getElementsByClassName("keywordName");
-    for(var i = 0; i<li_val.length; i++)
-    {
-        li_val[i].addEventListener('click',function(){
-            console.log("wrkxdmsrhwp");
-        });
-    }*/
     //9월 1주차
     //추천 목록 여러개 추가 
     // 유동적으로 받아서 검색 추천
