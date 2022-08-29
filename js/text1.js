@@ -6,17 +6,9 @@ $(document).ready(function () {
     // var container= document.getElementsByClassName("container")[0];
     var container = $(".keywordsBox");
     var keywordfocus = document.getElementsByClassName("keywordsBox")[0];
-    searchInput.onfocus = function () {
-        container.addClass("onFocus");
-    }
-    searchInput.onblur = function() {
-       // container.removeClass("onFocus");
-    }
     /*
-    keywordfocus.onmouseleave = function() {
-        searchInput.onblur = function () {
-            container.removeClass("onFocus");
-        }
+    searchInput.onblur = function() {
+        container.removeClass("onFocus");
     }*/
 
     var icon_src = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
@@ -71,9 +63,11 @@ $(document).ready(function () {
             if (searchValue == "" || searchValue == " ") {
                 search_keywords.style.opacity = "0";
                 search_keywords.style.zIndex = "-2";
+                container.removeClass("onFocus");
             }
             else if (recomList[i].indexOf(searchValue) != -1) {
-                console.log(searchValue);
+                //console.log(searchValue);
+                container.addClass("onFocus");
                 console.log("ㅇㅇ");
                 keywordsList(searchValue);
                 //search_keywords.addClass("onKeyup");
@@ -92,6 +86,11 @@ $(document).ready(function () {
                 inputText.value = searchText;
                 document.getElementById("search").submit();
             })
+        }
+    }
+    searchInput.onkeydown = function(event){
+        if(event.key=="Escape"){
+            container.removeClass("onFocus");
         }
     }
     //9월 1주차
