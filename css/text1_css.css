@@ -120,22 +120,22 @@ table
 {
     width: 20px;
     position: absolute;
-    top : 42%;
+    top : 42.5%;
     left: 34.5%;
     
 }
 .search_icon
 {
     
-    width: 25px;
+    width: 18px;
 }
 
 .mic_img
 {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    top: 41.3%;
+    top: 41.7%;
     right: 34%;
 }
 .mic_img:hover
@@ -144,7 +144,7 @@ table
 }
 .mic_icon
 {
-    width: 35px;
+    width: 28px;
 }
 
 .keywordsBox

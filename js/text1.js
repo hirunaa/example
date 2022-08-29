@@ -9,7 +9,7 @@ $(document).ready(function () {
     var site_name = ["Instagram", "Chrome", "add"];
 
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법"];
-    let recomList_2 = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법", "물리2", "몰?루", "아!루", "리눅스", "스플렁크"];
+    let recomList_2 = ["유튜브","유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법", "물리2","물리학", "몰?루", "아!루", "리눅스", "스플렁크"];
 
     var search_keywords = document.getElementsByClassName("showKeywords")[0];
 
