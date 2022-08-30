@@ -8,11 +8,19 @@ $(document).ready(function () {
     var icon_src = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
     var site_name = ["Instagram", "Chrome", "add"];
 
-    let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법"];
-    let recomList_2 = ["유튜브","유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법", "물리2","물리학", "몰?루", "아!루", "리눅스", "스플렁크", ];
+    let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐", "리눅스", "스플렁크" ];
+    let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube"]
+    recomListAdd(recomList2);
+    
+    function recomListAdd(addList)
+    {
+        for(var i=0; i<addList.length; i++)
+        {
+            recomList.push(addList[i]);
+        }
+    }
 
     var search_keywords = document.getElementsByClassName("showKeywords")[0];
-
     function input_radius_off()
     {
         searchInput.style.borderTopLeftRadius="11px";
@@ -51,11 +59,11 @@ $(document).ready(function () {
     // input창에 "유"입력 시 연관검색어 출력. 글자를 지울 경우 리스트 삭제
     function keywordsList(eqkeywords) {
         rmkeywords();
-        for (var i = 0; i < recomList_2.length; i++) {
-            if (recomList_2[i].indexOf(eqkeywords) != -1) {
+        for (var i = 0; i < recomList.length; i++) {
+            if (recomList[i].toUpperCase().indexOf(eqkeywords.toUpperCase()) == 0) {
                 var keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
                 var keywordsContainer = document.getElementById("search_keywords");
-                keywords.querySelector(".keywordName").innerText = recomList_2[i];
+                keywords.querySelector(".keywordName").innerText = recomList[i];
                 keywordsContainer.appendChild(keywords);
             }
         }
@@ -71,14 +79,15 @@ $(document).ready(function () {
     searchInput.onkeyup = function () {
         rmkeywords();
         var searchValue = document.getElementById("input").value;
-        for (var i = 0; i < recomList_2.length; i++) {
+        for (var i = 0; i < recomList.length; i++) {
             if (searchValue == "" || searchValue == " ") {
                 search_keywords.style.opacity = "0";
                 search_keywords.style.zIndex = "-2";
                 container.removeClass("onFocus");
                 input_radius_on();
             }
-            else if (recomList_2[i].indexOf(searchValue) != -1) {
+            else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
+                console.log(recomList[i].indexOf(searchValue));
                 container.addClass("onFocus");
                 input_radius_off();
                 keywordsList(searchValue);
