@@ -7,10 +7,11 @@ $(document).ready(function () {
     var keywordfocus = document.getElementsByClassName("keywordsBox")[0];
     var icon_src = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
     var site_name = ["Instagram", "Chrome", "add"];
+    var search_keywords = document.getElementsByClassName("showKeywords")[0];
 
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
     let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
-    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크" ]
+    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크" ];
 
     recomListAdd(recomList2);
     recomListAdd(recomList3);
@@ -23,7 +24,6 @@ $(document).ready(function () {
         }
     }
 
-    var search_keywords = document.getElementsByClassName("showKeywords")[0];
     function input_radius_off()
     {
         searchInput.style.borderTopLeftRadius="11px";
