@@ -12,10 +12,12 @@ $(document).ready(function () {
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
     let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
     let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크" ];
+    let recomList4 = ["Ornithorhynchus anatinus", "Steam", "Google", "Visual Studio Code"];
 
     recomListAdd(recomList2);
     recomListAdd(recomList3);
-    
+    recomListAdd(recomList4);
+
     function recomListAdd(addList)
     {
         for(var i=0; i<addList.length; i++)
