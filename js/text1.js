@@ -8,9 +8,12 @@ $(document).ready(function () {
     var icon_src = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
     var site_name = ["Instagram", "Chrome", "add"];
 
-    let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐", "리눅스", "스플렁크" ];
-    let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube"]
+    let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
+    let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
+    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크" ]
+
     recomListAdd(recomList2);
+    recomListAdd(recomList3);
     
     function recomListAdd(addList)
     {
@@ -87,7 +90,6 @@ $(document).ready(function () {
                 input_radius_on();
             }
             else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
-                console.log(recomList[i].indexOf(searchValue));
                 container.addClass("onFocus");
                 input_radius_off();
                 keywordsList(searchValue);
