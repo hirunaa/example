@@ -71,6 +71,7 @@ $(document).ready(function () {
      * @param {String} equalkeywords 검색할 단어 
      */
     function keywordsList(equalkeywords) {
+        //console.log("keywordsList");
         rmkeywords();
         for (var i = 0; i < recomList.length; i++) {
             if (recomList[i].toUpperCase().indexOf(equalkeywords.toUpperCase()) == 0) {
@@ -92,9 +93,14 @@ $(document).ready(function () {
         }
     }
 
-    searchInput.onkeyup = function (e) {
-        if(e.key != "Process" && e.key !="ArrowDown"){
-            listIndex=1;
+    searchInput.oninput = function (e) {
+        console.log(e.keyCode)
+        if(e.keyCode==40 || e.keyCode!=38)
+        {
+            e.preventDefault();
+        }    
+        if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=37 && e.keyCode!=39){
+            listIndex=0;
             rmkeywords();
             var searchValue = document.getElementById("input").value;
             var blankKeyword = document.getElementsByClassName("keywords")[0];
@@ -136,27 +142,49 @@ $(document).ready(function () {
         
     }
     
-    var listIndex = 1;
-    document.onkeydown=function(e){
+    var listIndex = 0;
+    searchInput.onkeydown=function(e){
+        console.log("input");
         var keywordList = document.querySelectorAll(".keywords");
         var inputText = document.getElementById("input");
-        console.log(e.key);
-        if(e.key=="ArrowDown"){
-            searchInput.focus();
-            document.getElementsByClassName("keywords")[listIndex-1].style.backgroundColor = "white";
-            if(listIndex>=keywordList.length)
+        listColorInit();
+        if(e.keyCode==40){
+            listIndex++;
+            if(listIndex >= keywordList.length)
             {
-                document.getElementsByClassName("keywords")[1].focus();
                 listIndex=1;
             }
             document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e"
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e";
             inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText;
-            searchInput.focus();
-            listIndex++;
+            console.log(listIndex)
+            }
+        else if(e.keyCode==38)
+        {
+            listIndex--;
+            if(listIndex<=0)
+            {
+                listIndex=keywordList.length-1;
+            }
+            document.getElementsByClassName("keywords")[listIndex].focus();
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e";
+            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText
+            
         }
-        
-    }         
+        else if(e.keyCode==37 || e.keyCode==39)
+        {
+            document.getElementsByClassName("keywords")[listIndex].focus();
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e";
+        }
+        searchInput.focus();         
+        }
+
+        function listColorInit(){
+            for(var i=0; i<document.querySelectorAll(".keywords").length; i++)
+            {
+                document.getElementsByClassName("keywords")[i].style.backgroundColor="white";
+            }
+        }
     
     //추천 검색어 화살표 이동 가능 
     //이동시 input에 해당 텍스트 배치 및 선택 항목 하이라이팅
