@@ -228,15 +228,15 @@ a
     z-index: 1;
 }
 
+*:focus
+{
+    outline: 0;
+}
 /* nth child , not first */
 .keywords:hover:not(:first-child)
 {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: default;
-}
-*:focus
-{
-    outline: 0;
 }
 /*
 .onKeyup

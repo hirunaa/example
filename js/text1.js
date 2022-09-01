@@ -143,22 +143,27 @@ $(document).ready(function () {
     }
     
     var listIndex = 0;
-    searchInput.onkeydown=function(e){
+    searchInput.addEventListener("keydown", function(e){
         console.log("input");
         var keywordList = document.querySelectorAll(".keywords");
         var inputText = document.getElementById("input");
         listColorInit();
-        if(e.keyCode==40){
+        var keycode = e.keyCode;
+        if(keycode==40){
             listIndex++;
             if(listIndex >= keywordList.length)
             {
                 listIndex=1;
             }
             document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e";
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
             inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText;
             console.log(listIndex)
+            e.preventDefault();
+            //e.propagation
+            //이벤트 버블링, 캡쳐링
             }
+
         else if(e.keyCode==38)
         {
             listIndex--;
@@ -167,18 +172,63 @@ $(document).ready(function () {
                 listIndex=keywordList.length-1;
             }
             document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e";
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
             inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText
-            
+            e.preventDefault(); 
         }
         else if(e.keyCode==37 || e.keyCode==39)
         {
             document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e";
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
         }
+        
+        
+        searchInput.focus();
+    });
+    /*
+    searchInput.onkeydown=function(e){
+        console.log("input");
+        var keywordList = document.querySelectorAll(".keywords");
+        var inputText = document.getElementById("input");
+        listColorInit();
+        var keycode = e.keyCode;
+        if(keycode==40){
+            listIndex++;
+            if(listIndex >= keywordList.length)
+            {
+                listIndex=1;
+            }
+            document.getElementsByClassName("keywords")[listIndex].focus();
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
+            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText;
+            console.log(listIndex)
+            e.preventDefault();
+            //e.propagation
+            //이벤트 버블링, 캡쳐링
+            }
+
+        else if(e.keyCode==38)
+        {
+            listIndex--;
+            if(listIndex<=0)
+            {
+                listIndex=keywordList.length-1;
+            }
+            document.getElementsByClassName("keywords")[listIndex].focus();
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
+            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText
+            e.preventDefault(); 
+        }
+        else if(e.keyCode==37 || e.keyCode==39)
+        {
+            document.getElementsByClassName("keywords")[listIndex].focus();
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
+        }
+        
+        
         searchInput.focus();         
         }
-
+        */
         function listColorInit(){
             for(var i=0; i<document.querySelectorAll(".keywords").length; i++)
             {
