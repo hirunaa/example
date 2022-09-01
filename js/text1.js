@@ -181,60 +181,22 @@ $(document).ready(function () {
             document.getElementsByClassName("keywords")[listIndex].focus();
             document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
         }
-        
-        
         searchInput.focus();
     });
-    /*
-    searchInput.onkeydown=function(e){
-        console.log("input");
-        var keywordList = document.querySelectorAll(".keywords");
-        var inputText = document.getElementById("input");
-        listColorInit();
-        var keycode = e.keyCode;
-        if(keycode==40){
-            listIndex++;
-            if(listIndex >= keywordList.length)
-            {
-                listIndex=1;
-            }
-            document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
-            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText;
-            console.log(listIndex)
-            e.preventDefault();
-            //e.propagation
-            //이벤트 버블링, 캡쳐링
-            }
 
-        else if(e.keyCode==38)
-        {
-            listIndex--;
-            if(listIndex<=0)
-            {
-                listIndex=keywordList.length-1;
-            }
-            document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
-            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText
-            e.preventDefault(); 
-        }
-        else if(e.keyCode==37 || e.keyCode==39)
-        {
-            document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
-        }
-        
-        
-        searchInput.focus();         
-        }
-        */
         function listColorInit(){
             for(var i=0; i<document.querySelectorAll(".keywords").length; i++)
             {
                 document.getElementsByClassName("keywords")[i].style.backgroundColor="white";
             }
         }
+    
+    document.getElementById("search_keywords").addEventListener("mouseover", function(e){
+        e.target.style.backgroundColor="#dddddd";
+    });
+    document.getElementById("search_keywords").addEventListener("mouseout", function(e){
+        e.target.style.backgroundColor="#ffffff";
+    });
     
     //추천 검색어 화살표 이동 가능 
     //이동시 input에 해당 텍스트 배치 및 선택 항목 하이라이팅
