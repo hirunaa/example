@@ -94,7 +94,7 @@ $(document).ready(function () {
     }
 
     searchInput.oninput = function (e) {
-        console.log(e.keyCode)
+        //console.log(e.keyCode)
         if(e.keyCode==40 || e.keyCode!=38)
         {
             e.preventDefault();
@@ -144,7 +144,7 @@ $(document).ready(function () {
     
     var listIndex = 0;
     searchInput.addEventListener("keydown", function(e){
-        console.log("input");
+        //console.log("input");
         var keywordList = document.querySelectorAll(".keywords");
         var inputText = document.getElementById("input");
         listColorInit();
@@ -158,7 +158,7 @@ $(document).ready(function () {
             document.getElementsByClassName("keywords")[listIndex].focus();
             document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
             inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText;
-            console.log(listIndex)
+            //console.log(listIndex)
             e.preventDefault();
             //e.propagation
             //이벤트 버블링, 캡쳐링
@@ -192,7 +192,7 @@ $(document).ready(function () {
         }
     
     document.getElementById("search_keywords").addEventListener("mouseover", function(e){
-        e.target.style.backgroundColor="#dddddd";
+        e.target.style.backgroundColor="#f0f0f0";
     });
     document.getElementById("search_keywords").addEventListener("mouseout", function(e){
         e.target.style.backgroundColor="#ffffff";
