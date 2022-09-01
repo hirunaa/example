@@ -195,7 +195,7 @@ $(document).ready(function () {
         e.target.style.backgroundColor="#f0f0f0";
     });
     document.getElementById("search_keywords").addEventListener("mouseout", function(e){
-        e.target.style.backgroundColor="#ffffff";
+        e.target.style.backgroundColor="transparent";
     });
     
     //추천 검색어 화살표 이동 가능 
