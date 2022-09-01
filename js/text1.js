@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
     let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
-    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크" ];
+    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크","스플렁크" ];
     let recomList4 = ["Ornithorhynchus anatinus", "Steam", "Google", "Visual Studio Code"];
 
     recomListAdd(recomList2);
@@ -24,6 +24,8 @@ $(document).ready(function () {
         {
             recomList.push(addList[i]);
         }
+        var set = new Set(recomList);
+        recomList = [...set];
     }
 
     function input_radius_off()
@@ -32,6 +34,8 @@ $(document).ready(function () {
         searchInput.style.borderTopRightRadius="11px";
         searchInput.style.borderBottomRightRadius = "0";
         searchInput.style.borderBottomLeftRadius = "0";
+
+        // => searchInput.style = {borderTypLeftRdadius : "ddd", ddd}
     }
     function input_radius_on()
     {
@@ -39,16 +43,16 @@ $(document).ready(function () {
     }
 
     searchInput.onblur = function(e) {
-        console.log(e.currentTarget);
-        console.log(e.relatedTarget);
-        if(e.relatedTarget === null) {
+        //console.log(e.currentTarget);
+        //console.log(e.relatedTarget);
+        if(e.relatedTarget === null) { 
             container.removeClass('onFocus');
             input_radius_on();
         }
     }
 
     searchInput.onkeydown = function(event){
-        if(event.key=="Escape" || event.key=="Tab"){
+        if(event.key=="Escape"){
             container.removeClass("onFocus");
             input_radius_on();
         }
@@ -61,19 +65,26 @@ $(document).ready(function () {
         iconList.querySelector(".siteName").innerText = site_name[i];
         iconbox.appendChild(iconList);
     }
-    // input창에 "유"입력 시 연관검색어 출력. 글자를 지울 경우 리스트 삭제
-    function keywordsList(eqkeywords) {
+
+    /**
+     * ~~~하는 함수
+     * @param {String} equalkeywords 검색할 단어 
+     */
+    function keywordsList(equalkeywords) {
         rmkeywords();
         for (var i = 0; i < recomList.length; i++) {
-            if (recomList[i].toUpperCase().indexOf(eqkeywords.toUpperCase()) == 0) {
+            if (recomList[i].toUpperCase().indexOf(equalkeywords.toUpperCase()) == 0) {
                 var keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
                 var keywordsContainer = document.getElementById("search_keywords");
                 keywords.querySelector(".keywordName").innerText = recomList[i];
+                //keywords.setAttribute('tabindex',i);
                 keywordsContainer.appendChild(keywords);
+                
             }
         }
     }
 
+    //removeKeyword
     function rmkeywords() {
         var rmlist = document.querySelectorAll(".keywords");
         for (var i = 1; i < rmlist.length; i++) {
@@ -81,39 +92,82 @@ $(document).ready(function () {
         }
     }
 
-    searchInput.onkeyup = function () {
-        rmkeywords();
-        var searchValue = document.getElementById("input").value;
-        for (var i = 0; i < recomList.length; i++) {
-            if (searchValue == "" || searchValue == " ") {
-                search_keywords.style.opacity = "0";
-                search_keywords.style.zIndex = "-2";
-                container.removeClass("onFocus");
-                input_radius_on();
+    searchInput.onkeyup = function (e) {
+        if(e.key != "Process" && e.key !="ArrowDown"){
+            listIndex=1;
+            rmkeywords();
+            var searchValue = document.getElementById("input").value;
+            var blankKeyword = document.getElementsByClassName("keywords")[0];
+            blankKeyword.querySelector("p").style.display="";
+            for (var i = 0; i < recomList.length; i++) {
+                if (searchValue == "" || searchValue == " ") {
+                    rmkeywords();
+                    search_keywords.style.opacity = "0";
+                    search_keywords.style.zIndex = "-2";
+                    container.removeClass("onFocus");
+                    input_radius_on();
+                }
+                else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
+                    container.addClass("onFocus");
+                    rmkeywords();
+                    input_radius_off();
+                    keywordsList(searchValue);
+                    search_keywords.style.opacity = "1";
+                    search_keywords.style.zIndex = "2";
+                    
+                }
             }
-            else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
-                container.addClass("onFocus");
-                input_radius_off();
-                keywordsList(searchValue);
-                search_keywords.style.opacity = "1";
-                search_keywords.style.zIndex = "2";
-            }
+            blankKeyword.querySelector("p").style.display="none";
         }
-        var inputText=document.getElementById("input");
-        var keyNames = document.querySelectorAll(".keywordName");
+
+        
+        var inputText = document.getElementById("input");
+        var keyNames = document.querySelectorAll(".keywords");
+        // for (of )문법 설명
+        // e.currentTarget 이나 e.target 으로 변경
         for (const keyName of keyNames) {
             keyName.addEventListener('click', function (event) {
-                
-                index = [].slice.call(keyNames).indexOf(keyName); //유사배열
-                searchText = keyNames[index].innerText;
+                //console.log(event.currentTarget.innerText);
+                searchText = event.currentTarget.innerText;
                 inputText.value = searchText;
                 document.getElementById("search").submit();
             })
         }
+        
     }
     
-    //9월 1주차
-    //추천 목록 여러개 추가 
-    //유동적으로 받아서 검색 추천
-    //검색된 리스트 클릭 시 해당 단어 input 창 세팅 후 검색
+    var listIndex = 1;
+    document.onkeydown=function(e){
+        var keywordList = document.querySelectorAll(".keywords");
+        var inputText = document.getElementById("input");
+        console.log(e.key);
+        if(e.key=="ArrowDown"){
+            searchInput.focus();
+            document.getElementsByClassName("keywords")[listIndex-1].style.backgroundColor = "white";
+            if(listIndex>=keywordList.length)
+            {
+                document.getElementsByClassName("keywords")[1].focus();
+                listIndex=1;
+            }
+            document.getElementsByClassName("keywords")[listIndex].focus();
+            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#9e9e9e"
+            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText;
+            searchInput.focus();
+            listIndex++;
+        }
+        
+    }         
+    
+    //추천 검색어 화살표 이동 가능 
+    //이동시 input에 해당 텍스트 배치 및 선택 항목 하이라이팅
+    //유투 검색 했을때 빈 칸 표출 디버깅
+    //.hide .show() 이용하여 첫번째 더미 데이터 지우기
 });
+
+
+
+//var let const 
+//hoisting
+//**scope */
+//전개 연산자
+//컨텐츠 요소 가운데 정렬

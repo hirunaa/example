@@ -168,7 +168,10 @@ table
     width: 100%;
     height: 40px;
 }
-
+.keywords
+{
+    background-color: #ffffff;
+}
 a
 {
     text-decoration: none;
@@ -224,10 +227,16 @@ a
     opacity: 1;
     z-index: 1;
 }
-.keywordName:hover
+
+/* nth child , not first */
+.keywords:hover:not(:first-child)
 {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: default;
+}
+*:focus
+{
+    outline: 0;
 }
 /*
 .onKeyup
