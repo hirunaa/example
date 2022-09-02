@@ -67,7 +67,7 @@ $(document).ready(function () {
     }
 
     /**
-     * input에 입력한 단어와 동일한 단어를 리스트에 정렬하는 함수
+     * input에 입력한 단어와 동일한 단어를 리스트에 정렬하는 함수.
      * @param {String} equalkeywords 검색할 단어 
      */
     function keywordsList(equalkeywords) {
@@ -92,7 +92,6 @@ $(document).ready(function () {
             rmlist[i].remove();
         }
     }
-
     searchInput.oninput = function (e) {
         //console.log(e.keyCode)    
         if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=37 && e.keyCode!=39){
@@ -147,7 +146,6 @@ $(document).ready(function () {
         }
         
     }
-    
     var listIndex = 0;
     searchInput.addEventListener("keydown", function(e){
         //console.log("input");
