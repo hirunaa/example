@@ -5,9 +5,9 @@ $(document).ready(function () {
     var container = $(".keywordsBox");
 
     var keywordfocus = document.getElementsByClassName("keywordsBox")[0];
-    var icon_src = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
-    var site_name = ["Instagram", "Chrome", "add"];
-    var search_keywords = document.getElementsByClassName("showKeywords")[0];
+    var iconSrc = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
+    var siteName = ["Instagram", "Chrome", "add"];
+    var searchKeywords = document.getElementsByClassName("showKeywords")[0];
 
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
     let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
@@ -28,7 +28,7 @@ $(document).ready(function () {
         recomList = [...set];
     }
 
-    function input_radius_off()
+    function inputRadiusOff()
     {
         searchInput.style.borderTopLeftRadius="11px";
         searchInput.style.borderTopRightRadius="11px";
@@ -37,7 +37,7 @@ $(document).ready(function () {
 
         // => searchInput.style = {borderTypLeftRdadius : "ddd", ddd}
     }
-    function input_radius_on()
+    function inputRadiusOn()
     {
         searchInput.style.borderRadius="22px";
     }
@@ -47,22 +47,22 @@ $(document).ready(function () {
         //console.log(e.relatedTarget);
         if(e.relatedTarget === null) { 
             container.removeClass('onFocus');
-            input_radius_on();
+            inputRadiusOn();
         }
     }
 
     searchInput.onkeydown = function(event){
         if(event.key=="Escape"){
             container.removeClass("onFocus");
-            input_radius_on();
+            inputRadiusOn();
         }
     }
 
-    for (var i = 0; i < icon_src.length; i++) {
+    for (var i = 0; i < iconSrc.length; i++) {
         let iconList = document.getElementsByClassName("icon_table")[0].cloneNode(true);
         let iconbox = document.getElementById("icon_container");
-        iconList.querySelector(".icon").setAttribute('src', icon_src[i]);
-        iconList.querySelector(".siteName").innerText = site_name[i];
+        iconList.querySelector(".icon").setAttribute('src', iconSrc[i]);
+        iconList.querySelector(".siteName").innerText = siteName[i];
         iconbox.appendChild(iconList);
     }
 
@@ -104,27 +104,27 @@ $(document).ready(function () {
                 //console.log(recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()));
                 if (searchValue == "" || searchValue == " ") {
                     removeKeywords();
-                    search_keywords.style.opacity = "0";
-                    search_keywords.style.zIndex = "-2";
+                    searchKeywords.style.opacity = "0";
+                    searchKeywords.style.zIndex = "-2";
                     container.removeClass("onFocus");
-                    input_radius_on();
+                    inputRadiusOn();
                 }
                 else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
                     container.addClass("onFocus");
                     removeKeywords();
-                    input_radius_off();
+                    inputRadiusOff();
                     keywordsList(searchValue);
-                    search_keywords.style.opacity = "1";
-                    search_keywords.style.zIndex = "2";
+                    searchKeywords.style.opacity = "1";
+                    searchKeywords.style.zIndex = "2";
                 }
 
                 if(document.getElementsByClassName("keywordName").length==1)
                 {
                     removeKeywords();
-                    search_keywords.style.opacity = "0";
-                    search_keywords.style.zIndex = "-2";
+                    searchKeywords.style.opacity = "0";
+                    searchKeywords.style.zIndex = "-2";
                     container.removeClass("onFocus");
-                    input_radius_on();
+                    inputRadiusOn();
                 }
                 
             }
