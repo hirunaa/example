@@ -67,12 +67,12 @@ $(document).ready(function () {
     }
 
     /**
-     * ~~~하는 함수
+     * input에 입력한 단어와 동일한 단어를 리스트에 정렬하는 함수
      * @param {String} equalkeywords 검색할 단어 
      */
     function keywordsList(equalkeywords) {
         //console.log("keywordsList");
-        rmkeywords();
+        removeKeywords();
         for (var i = 0; i < recomList.length; i++) {
             if (recomList[i].toUpperCase().indexOf(equalkeywords.toUpperCase()) == 0) {
                 var keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
@@ -82,11 +82,11 @@ $(document).ready(function () {
                 keywordsContainer.appendChild(keywords);
                 
             }
-        }
+        }       
     }
 
     //removeKeyword
-    function rmkeywords() {
+    function removeKeywords() {
         var rmlist = document.querySelectorAll(".keywords");
         for (var i = 1; i < rmlist.length; i++) {
             rmlist[i].remove();
@@ -94,20 +94,17 @@ $(document).ready(function () {
     }
 
     searchInput.oninput = function (e) {
-        //console.log(e.keyCode)
-        if(e.keyCode==40 || e.keyCode!=38)
-        {
-            e.preventDefault();
-        }    
+        //console.log(e.keyCode)    
         if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=37 && e.keyCode!=39){
             listIndex=0;
-            rmkeywords();
+            removeKeywords();
             var searchValue = document.getElementById("input").value;
             var blankKeyword = document.getElementsByClassName("keywords")[0];
             blankKeyword.querySelector("p").style.display="";
             for (var i = 0; i < recomList.length; i++) {
+                //console.log(recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()));
                 if (searchValue == "" || searchValue == " ") {
-                    rmkeywords();
+                    removeKeywords();
                     search_keywords.style.opacity = "0";
                     search_keywords.style.zIndex = "-2";
                     container.removeClass("onFocus");
@@ -115,13 +112,22 @@ $(document).ready(function () {
                 }
                 else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
                     container.addClass("onFocus");
-                    rmkeywords();
+                    removeKeywords();
                     input_radius_off();
                     keywordsList(searchValue);
                     search_keywords.style.opacity = "1";
                     search_keywords.style.zIndex = "2";
-                    
                 }
+
+                if(document.getElementsByClassName("keywordName").length==1)
+                {
+                    removeKeywords();
+                    search_keywords.style.opacity = "0";
+                    search_keywords.style.zIndex = "-2";
+                    container.removeClass("onFocus");
+                    input_radius_on();
+                }
+                
             }
             blankKeyword.querySelector("p").style.display="none";
         }
@@ -210,4 +216,3 @@ $(document).ready(function () {
 //hoisting
 //**scope */
 //전개 연산자
-//컨텐츠 요소 가운데 정렬
