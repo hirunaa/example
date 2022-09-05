@@ -150,9 +150,7 @@ $(document).ready(function () {
         // e.currentTarget 이나 e.target 으로 변경
         for (const keyName of keyNames) {
             keyName.addEventListener('click', function (event) {
-                //console.log(event.currentTarget.text());
-                //searchText = event.currentTarget.text();
-                inputText.val(event.currentTarget);
+                inputText.val($(event.currentTarget).text());
                 $("#search").submit();
             });
         }
@@ -172,7 +170,7 @@ $(document).ready(function () {
             }
             $(".keywords:eq("+listIndex+")").focus();
             $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
-            //$("#input").val() = $(".keywords:eq("+listIndex+")").text();
+            $("#input").val($(".keywords:eq("+listIndex+")").text());
             console.log(listIndex);
             e.preventDefault();
             //e.propagation
@@ -188,7 +186,7 @@ $(document).ready(function () {
             }
             $(".keywords:eq("+listIndex+")").focus();
             $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
-            //$("#input").val() = $(".keywords:eq("+listIndex+")").text()
+            $("#input").val($(".keywords:eq("+listIndex+")").text());
             console.log(listIndex);
             e.preventDefault(); 
         }
@@ -208,11 +206,11 @@ $(document).ready(function () {
             }
         }
     
-    document.getElementById("search_keywords").addEventListener("mouseover", function(e){
-        e.target.style.backgroundColor="#f0f0f0";
+    $("#search_keywords").mouseover(function(e){
+        $(e.target).css("backgroundColor","#f0f0f0");
     });
-    document.getElementById("search_keywords").addEventListener("mouseout", function(e){
-        e.target.style.backgroundColor="transparent";
+    $("#search_keywords").mouseout(function(e){
+        $(e.target).css("backgroundColor","transparent");
     });
     
     //추천 검색어 화살표 이동 가능 
