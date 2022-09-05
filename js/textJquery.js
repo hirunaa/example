@@ -15,6 +15,11 @@ $(document).ready(function () {
     let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크","스플렁크" ];
     let recomList4 = ["Ornithorhynchus anatinus", "Steam", "Google", "Visual Studio Code"];
 
+    const ArrowUp = 38;
+    const ArrowDown = 40;
+    const ArrowLeft = 37;
+    const ArrowRight = 39;
+
     recomListAdd(recomList2);
     recomListAdd(recomList3);
     recomListAdd(recomList4);
@@ -99,16 +104,16 @@ $(document).ready(function () {
         }
     }
     searchInput.on("input",function (e) {    
-        if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=37 && e.keyCode!=39){
+        if(e.keyCode!= ArrowDown && e.keyCode!=ArrowUp && e.keyCode!=ArrowLeft && e.keyCode!=ArrowRight){
             listIndex=0;
             removeKeywords();
             var searchValue = $("#input").val();
             var blankKeyword = $(".keywords");
             blankKeyword.find("p").css("display","");
             for (var i = 0; i < recomList.length; i++) {
-                
+                removeKeywords();
                 if (searchValue == "" || searchValue == " ") {
-                    removeKeywords();
+                    
                     searchKeywords.css({
                         "opacity":"0",
                         "z-index" : "-2"
@@ -118,7 +123,7 @@ $(document).ready(function () {
                 }
                 else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
                     container.addClass("onFocus");
-                    removeKeywords();
+                    
                     inputRadiusOff();
                     keywordsList(searchValue);
                     searchKeywords.css({
@@ -129,8 +134,6 @@ $(document).ready(function () {
 
                 if($(".keywordName").length==1)
                 {
-                    console.log("ㄴㄴ");
-                    removeKeywords();
                     searchKeywords.css({
                         "opcity":"0",
                         "z-index" : "-2"
@@ -162,7 +165,7 @@ $(document).ready(function () {
         var keywordList = $(".keywords");
         listColorInit();
         var keycode = e.keyCode;
-        if(keycode==40){
+        if(keycode==ArrowDown){
             listIndex++;
             if(listIndex >= keywordList.length)
             {
@@ -177,7 +180,7 @@ $(document).ready(function () {
             //이벤트 버블링, 캡쳐링
             }
 
-        else if(e.keyCode==38)
+        else if(e.keyCode==ArrowUp)
         {
             listIndex--;
             if(listIndex<=0)
@@ -190,7 +193,7 @@ $(document).ready(function () {
             console.log(listIndex);
             e.preventDefault(); 
         }
-        else if(e.keyCode==37 || e.keyCode==39)
+        else if(e.keyCode==ArrowLeft || e.keyCode==ArrowRight)
         {
             $(".keywords:eq("+listIndex+")").focus();
             $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
@@ -201,7 +204,6 @@ $(document).ready(function () {
         function listColorInit(){
             for(var i=0; i<$(".keywords").length; i++)
             {
-                console.log("init");
                $(".keywords:eq("+i+")").css("background-color","white");
             }
         }
