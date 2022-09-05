@@ -212,4 +212,3 @@ $(document).ready(function () {
 //var let const 
 //hoisting
 //**scope */
-//전개 연산자
