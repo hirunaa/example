@@ -78,7 +78,6 @@ $(document).ready(function () {
                 var keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
                 var keywordsContainer = document.getElementById("search_keywords");
                 keywords.querySelector(".keywordName").innerText = recomList[i];
-                //keywords.setAttribute('tabindex',i);
                 keywordsContainer.appendChild(keywords);
                 
             }
@@ -92,8 +91,7 @@ $(document).ready(function () {
             rmlist[i].remove();
         }
     }
-    searchInput.oninput = function (e) {
-        //console.log(e.keyCode)    
+    searchInput.oninput = function (e) {    
         if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=37 && e.keyCode!=39){
             listIndex=0;
             removeKeywords();
@@ -101,7 +99,7 @@ $(document).ready(function () {
             var blankKeyword = document.getElementsByClassName("keywords")[0];
             blankKeyword.querySelector("p").style.display="";
             for (var i = 0; i < recomList.length; i++) {
-                //console.log(recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()));
+                
                 if (searchValue == "" || searchValue == " ") {
                     removeKeywords();
                     searchKeywords.style.opacity = "0";
@@ -120,6 +118,7 @@ $(document).ready(function () {
 
                 if(document.getElementsByClassName("keywordName").length==1)
                 {
+                    console.log("ㄴㄴ");
                     removeKeywords();
                     searchKeywords.style.opacity = "0";
                     searchKeywords.style.zIndex = "-2";
