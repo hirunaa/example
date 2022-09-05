@@ -2,13 +2,13 @@
 $(document).ready(function () {
 
 
-    var searchInput = document.getElementById("input");
+    var searchInput = $("#input");
     var container = $(".keywordsBox");
 
-    var keywordfocus = document.getElementsByClassName("keywordsBox")[0];
+    var keywordfocus = $(".keywordsBox");
     var iconSrc = ["../images/Instagram_Icon.png", "../images/Chrome.png", "../images/add_icon.png"];
     var siteName = ["Instagram", "Chrome", "add"];
-    var searchKeywords = document.getElementsByClassName("showKeywords")[0];
+    var searchKeywords = $(".showKeywords");
 
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
     let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
@@ -31,40 +31,46 @@ $(document).ready(function () {
 
     function inputRadiusOff()
     {
-        searchInput.style.borderTopLeftRadius="11px";
-        searchInput.style.borderTopRightRadius="11px";
-        searchInput.style.borderBottomRightRadius = "0";
-        searchInput.style.borderBottomLeftRadius = "0";
+        searchInput.css({
+            'border-top-left-radius':"11px",
+            'border-top-right-radius':"11px",
+            'border-bottom-left-radius':"0",
+            'border-bottom-right-radius':"0"
+        });
 
         // => searchInput.style = {borderTypLeftRdadius : "ddd", ddd}
     }
     function inputRadiusOn()
     {
-        searchInput.style.borderRadius="22px";
+        searchInput.css("border-radius","22px");
     }
 
-    searchInput.onblur = function(e) {
+// $("#searchInput").on("blur",function(){
+    //dfrgrgrg
+//})
+
+    searchInput.on("blur",function(e) {
         //console.log(e.currentTarget);
         //console.log(e.relatedTarget);
         if(e.relatedTarget === null) { 
             container.removeClass('onFocus');
             inputRadiusOn();
         }
-    }
+    });
 
-    searchInput.onkeydown = function(event){
+    searchInput.on("keydown",function(event){
         if(event.key=="Escape"){
             container.removeClass("onFocus");
             inputRadiusOn();
         }
-    }
+    });
 
     for (var i = 0; i < iconSrc.length; i++) {
-        let iconList = document.getElementsByClassName("icon_table")[0].cloneNode(true);
-        let iconbox = document.getElementById("icon_container");
-        iconList.querySelector(".icon").setAttribute('src', iconSrc[i]);
-        iconList.querySelector(".siteName").innerText = siteName[i];
-        iconbox.appendChild(iconList);
+        let iconList = $(".icon_table:eq(0)").clone(true);
+        let iconbox = $("#icon_container"); // $("#icon_container")
+        iconList.find(".icon").attr('src', iconSrc[i]);
+        iconList.find(".siteName").text(siteName[i]);
+        iconbox.append(iconList);
     }
 
     /**
@@ -76,10 +82,10 @@ $(document).ready(function () {
         removeKeywords();
         for (var i = 0; i < recomList.length; i++) {
             if (recomList[i].toUpperCase().indexOf(equalkeywords.toUpperCase()) == 0) {
-                var keywords = document.getElementsByClassName("keywords")[0].cloneNode(true);
-                var keywordsContainer = document.getElementById("search_keywords");
-                keywords.querySelector(".keywordName").innerText = recomList[i];
-                keywordsContainer.appendChild(keywords);
+                var keywords = $(".keywords:eq(0)").clone(true);
+                var keywordsContainer = $("#search_keywords");
+                keywords.find(".keywordName").text(recomList[i]);
+                keywordsContainer.append(keywords);
                 
             }
         }       
@@ -87,24 +93,26 @@ $(document).ready(function () {
 
     //removeKeyword
     function removeKeywords() {
-        var rmlist = document.querySelectorAll(".keywords");
+        var rmlist = $(".keywords");
         for (var i = 1; i < rmlist.length; i++) {
             rmlist[i].remove();
         }
     }
-    searchInput.oninput = function (e) {    
+    searchInput.on("input",function (e) {    
         if(e.keyCode!=40 && e.keyCode!=38 && e.keyCode!=37 && e.keyCode!=39){
             listIndex=0;
             removeKeywords();
-            var searchValue = document.getElementById("input").value;
-            var blankKeyword = document.getElementsByClassName("keywords")[0];
-            blankKeyword.querySelector("p").style.display="";
+            var searchValue = $("#input").val();
+            var blankKeyword = $(".keywords");
+            blankKeyword.find("p").css("display","");
             for (var i = 0; i < recomList.length; i++) {
                 
                 if (searchValue == "" || searchValue == " ") {
                     removeKeywords();
-                    searchKeywords.style.opacity = "0";
-                    searchKeywords.style.zIndex = "-2";
+                    searchKeywords.css({
+                        "opacity":"0",
+                        "z-index" : "-2"
+                    });
                     container.removeClass("onFocus");
                     inputRadiusOn();
                 }
@@ -113,44 +121,47 @@ $(document).ready(function () {
                     removeKeywords();
                     inputRadiusOff();
                     keywordsList(searchValue);
-                    searchKeywords.style.opacity = "1";
-                    searchKeywords.style.zIndex = "2";
+                    searchKeywords.css({
+                        "opacity":"1",
+                        "z-index" : "2"
+                    });
                 }
 
-                if(document.getElementsByClassName("keywordName").length==1)
+                if($(".keywordName").length==1)
                 {
                     console.log("ㄴㄴ");
                     removeKeywords();
-                    searchKeywords.style.opacity = "0";
-                    searchKeywords.style.zIndex = "-2";
+                    searchKeywords.css({
+                        "opcity":"0",
+                        "z-index" : "-2"
+                    });
                     container.removeClass("onFocus");
                     inputRadiusOn();
                 }
                 
             }
-            blankKeyword.querySelector("p").style.display="none";
+            blankKeyword.find("p").css("display","none");
         }
 
         
-        var inputText = document.getElementById("input");
-        var keyNames = document.querySelectorAll(".keywords");
+        var inputText = $("#input");
+        var keyNames = $(".keywords");
         // for (of )문법 설명
         // e.currentTarget 이나 e.target 으로 변경
         for (const keyName of keyNames) {
             keyName.addEventListener('click', function (event) {
-                //console.log(event.currentTarget.innerText);
-                searchText = event.currentTarget.innerText;
-                inputText.value = searchText;
-                document.getElementById("search").submit();
-            })
+                //console.log(event.currentTarget.text());
+                //searchText = event.currentTarget.text();
+                inputText.val(event.currentTarget);
+                $("#search").submit();
+            });
         }
         
-    }
+    });
     var listIndex = 0;
-    searchInput.addEventListener("keydown", function(e){
+    searchInput.on("keydown", function(e){
         //console.log("input");
-        var keywordList = document.querySelectorAll(".keywords");
-        var inputText = document.getElementById("input");
+        var keywordList = $(".keywords");
         listColorInit();
         var keycode = e.keyCode;
         if(keycode==40){
@@ -159,10 +170,10 @@ $(document).ready(function () {
             {
                 listIndex=1;
             }
-            document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
-            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText;
-            //console.log(listIndex)
+            $(".keywords:eq("+listIndex+")").focus();
+            $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
+            //$("#input").val() = $(".keywords:eq("+listIndex+")").text();
+            console.log(listIndex);
             e.preventDefault();
             //e.propagation
             //이벤트 버블링, 캡쳐링
@@ -175,23 +186,25 @@ $(document).ready(function () {
             {
                 listIndex=keywordList.length-1;
             }
-            document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
-            inputText.value = document.getElementsByClassName("keywords")[listIndex].innerText
+            $(".keywords:eq("+listIndex+")").focus();
+            $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
+            //$("#input").val() = $(".keywords:eq("+listIndex+")").text()
+            console.log(listIndex);
             e.preventDefault(); 
         }
         else if(e.keyCode==37 || e.keyCode==39)
         {
-            document.getElementsByClassName("keywords")[listIndex].focus();
-            document.getElementsByClassName("keywords")[listIndex].style.backgroundColor="#dddddd";
+            $(".keywords:eq("+listIndex+")").focus();
+            $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
         }
         searchInput.focus();
     });
 
         function listColorInit(){
-            for(var i=0; i<document.querySelectorAll(".keywords").length; i++)
+            for(var i=0; i<$(".keywords").length; i++)
             {
-                document.getElementsByClassName("keywords")[i].style.backgroundColor="white";
+                console.log("init");
+               $(".keywords:eq("+i+")").css("background-color","white");
             }
         }
     
@@ -213,3 +226,9 @@ $(document).ready(function () {
 //var let const 
 //hoisting
 //**scope */
+
+
+
+
+//on, bind delegate 
+//차이점
