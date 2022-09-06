@@ -103,7 +103,7 @@ $(document).ready(function () {
             rmlist[i].remove();
         }
     }
-    searchInput.on("input",function (e) {    
+    searchInput.on("input",function (e) {  
         if(e.keyCode!= ArrowDown && e.keyCode!=ArrowUp && e.keyCode!=ArrowLeft && e.keyCode!=ArrowRight){
             listIndex=0;
             removeKeywords();
@@ -111,9 +111,9 @@ $(document).ready(function () {
             var blankKeyword = $(".keywords");
             blankKeyword.find("p").css("display","");
             for (var i = 0; i < recomList.length; i++) {
-                removeKeywords();
+                
                 if (searchValue == "" || searchValue == " ") {
-                    
+                    removeKeywords();
                     searchKeywords.css({
                         "opacity":"0",
                         "z-index" : "-2"
@@ -123,7 +123,7 @@ $(document).ready(function () {
                 }
                 else if (recomList[i].toUpperCase().indexOf(searchValue.toUpperCase()) == 0) {
                     container.addClass("onFocus");
-                    
+                    removeKeywords();
                     inputRadiusOff();
                     keywordsList(searchValue);
                     searchKeywords.css({
@@ -140,6 +140,7 @@ $(document).ready(function () {
                     });
                     container.removeClass("onFocus");
                     inputRadiusOn();
+                    removeKeywords();
                 }
                 
             }
@@ -214,21 +215,6 @@ $(document).ready(function () {
     $("#search_keywords").mouseout(function(e){
         $(e.target).css("backgroundColor","transparent");
     });
-    
-    //추천 검색어 화살표 이동 가능 
-    //이동시 input에 해당 텍스트 배치 및 선택 항목 하이라이팅
-    //유투 검색 했을때 빈 칸 표출 디버깅
-    //.hide .show() 이용하여 첫번째 더미 데이터 지우기
 });
-
-
-
-//var let const 
-//hoisting
-//**scope */
-
-
-
-
 //on, bind delegate 
 //차이점
