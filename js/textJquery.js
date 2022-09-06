@@ -12,13 +12,16 @@ $(document).ready(function () {
 
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
     let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
-    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크","스플렁크" ];
-    let recomList4 = ["Ornithorhynchus anatinus", "Steam", "Google", "Visual Studio Code"];
+    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크","스플렁크","우라늄" ];
+    let recomList4 = ["Ornithorhynchus anatinus", "Steam", "Google", "Visual Studio Code","트라이메틸렌트라이나이트라민"];
 
     const ArrowUp = 38;
     const ArrowDown = 40;
     const ArrowLeft = 37;
     const ArrowRight = 39;
+
+    const focusColor = "#dddddd";
+    const mouseoverColor = "#f0f0f0";
 
     recomListAdd(recomList2);
     recomListAdd(recomList3);
@@ -162,18 +165,16 @@ $(document).ready(function () {
     });
     var listIndex = 0;
     searchInput.on("keydown", function(e){
-        //console.log("input");
         var keywordList = $(".keywords");
         listColorInit();
-        var keycode = e.keyCode;
-        if(keycode==ArrowDown){
+        if(e.keyCode==ArrowDown){
             listIndex++;
             if(listIndex >= keywordList.length)
             {
                 listIndex=1;
             }
             $(".keywords:eq("+listIndex+")").focus();
-            $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
+            $(".keywords:eq("+listIndex+")").css("background-color",focusColor);
             $("#input").val($(".keywords:eq("+listIndex+")").text());
             console.log(listIndex);
             e.preventDefault();
@@ -189,7 +190,7 @@ $(document).ready(function () {
                 listIndex=keywordList.length-1;
             }
             $(".keywords:eq("+listIndex+")").focus();
-            $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
+            $(".keywords:eq("+listIndex+")").css("background-color",focusColor);
             $("#input").val($(".keywords:eq("+listIndex+")").text());
             console.log(listIndex);
             e.preventDefault(); 
@@ -197,7 +198,7 @@ $(document).ready(function () {
         else if(e.keyCode==ArrowLeft || e.keyCode==ArrowRight)
         {
             $(".keywords:eq("+listIndex+")").focus();
-            $(".keywords:eq("+listIndex+")").css("background-color","#dddddd");
+            $(".keywords:eq("+listIndex+")").css("background-color",focusColor);
         }
         searchInput.focus();
     });
@@ -210,7 +211,7 @@ $(document).ready(function () {
         }
     
     $("#search_keywords").mouseover(function(e){
-        $(e.target).css("backgroundColor","#f0f0f0");
+        $(e.target).css("backgroundColor",mouseoverColor);
     });
     $("#search_keywords").mouseout(function(e){
         $(e.target).css("backgroundColor","transparent");
