@@ -26,7 +26,10 @@ $(document).ready(function () {
     recomListAdd(recomList2);
     recomListAdd(recomList3);
     recomListAdd(recomList4);
-
+    /**
+     * 추천검색어를 병합시키고, 중복 단어를 없애는 함수.
+     * @param {string} addList 
+     */
     function recomListAdd(addList)
     {
         for(var i=0; i<addList.length; i++)
@@ -52,11 +55,7 @@ $(document).ready(function () {
     {
         searchInput.css("border-radius","22px");
     }
-
-// $("#searchInput").on("blur",function(){
-    //dfrgrgrg
-//})
-
+    
     searchInput.on("blur",function(e) {
         //console.log(e.currentTarget);
         //console.log(e.relatedTarget);
