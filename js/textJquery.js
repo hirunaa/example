@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     let recomList = ["유튜브 프리미엄", "유튜브 미리보기", "유튜브 검색하는 법","물리2","물리학", "리튬", "스칸듐"];
     let recomList2 = ["아인슈타이늄","갈륨","인듐","사마륨","jQuery","javascript","YouTube","나무위키","네이버"];
-    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크","스플렁크","우라늄" ];
+    let recomList3 = ["html","css","가변저항","다이오드","RDX", "리눅스", "스플렁크","스플렁크","우라늄"];
     let recomList4 = ["Ornithorhynchus anatinus", "Steam", "Google", "Visual Studio Code","트라이메틸렌트라이나이트라민"];
 
     const ArrowUp = 38;
@@ -116,10 +116,7 @@ $(document).ready(function () {
                 
                 if (searchValue == "" || searchValue == " ") {
                     removeKeywords();
-                    searchKeywords.css({
-                        "opacity":"0",
-                        "z-index" : "-2"
-                    });
+                    searchKeywords.removeClass("keywordDisplay");
                     container.removeClass("onFocus");
                     inputRadiusOn();
                 }
@@ -128,18 +125,12 @@ $(document).ready(function () {
                     removeKeywords();
                     inputRadiusOff();
                     keywordsList(searchValue);
-                    searchKeywords.css({
-                        "opacity":"1",
-                        "z-index" : "2"
-                    });
+                    searchKeywords.addClass("keywordDisplay");
                 }
 
                 if($(".keywordName").length==1)
                 {
-                    searchKeywords.css({
-                        "opcity":"0",
-                        "z-index" : "-2"
-                    });
+                    searchKeywords.removeClass("keywordDisplay");
                     container.removeClass("onFocus");
                     inputRadiusOn();
                     removeKeywords();

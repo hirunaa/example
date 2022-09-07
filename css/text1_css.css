@@ -227,6 +227,11 @@ a
     opacity: 1;
     z-index: 1;
 }
+.keywordDisplay
+{
+    opacity: 1;
+    z-index: 2;
+}
 
 *:focus
 {
@@ -242,18 +247,3 @@ input::-webkit-search-cancel-button
 {
     display: none;
 }
-/*
-.onKeyup
-{
-    opacity: 1;
-    z-index: 2;
-}
-
-/*
-#onKeyup
-{
-    list-style-type: none;
-    opacity: 1;
-    z-index: 2;
-}
-*/
