@@ -143,8 +143,6 @@ $(document).ready(function () {
         
         var inputText = $("#input");
         var keyNames = $(".keywords");
-        // for (of )문법 설명
-        // e.currentTarget 이나 e.target 으로 변경
         for (const keyName of keyNames) {
             keyName.addEventListener('click', function (event) {
                 inputText.val($(event.currentTarget).text());
@@ -201,10 +199,10 @@ $(document).ready(function () {
         }
     
     $("#search_keywords").mouseover(function(e){
-        $(e.target).css("backgroundColor",mouseoverColor);
+        $(e.target).css("background-color",mouseoverColor);
     });
     $("#search_keywords").mouseout(function(e){
-        $(e.target).css("backgroundColor","transparent");
+        $(e.target).css("background-color","transparent");
     });
 });
 //on, bind delegate 

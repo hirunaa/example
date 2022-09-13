@@ -61,7 +61,7 @@ ul#list li
 }
 .icon
 {
-    width: 60px;
+    width: 55%;
     margin: auto;
 }
 .icon_table
@@ -247,3 +247,4 @@ input::-webkit-search-cancel-button
 {
     display: none;
 }
+
