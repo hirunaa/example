@@ -98,7 +98,6 @@ $(document).ready(function () {
         }       
     }
 
-    //removeKeyword
     function removeKeywords() {
         var rmlist = $(".keywords");
         for (var i = 1; i < rmlist.length; i++) {
@@ -152,9 +151,13 @@ $(document).ready(function () {
         
     });
     var listIndex = 0;
+
+
     searchInput.on("keydown", function(e){
         var keywordList = $(".keywords");
         listColorInit();
+
+        //분기가 많을 경우 case 문으로
         if(e.keyCode==ArrowDown){
             listIndex++;
             if(listIndex >= keywordList.length)
@@ -191,12 +194,14 @@ $(document).ready(function () {
         searchInput.focus();
     });
 
-        function listColorInit(){
-            for(var i=0; i<$(".keywords").length; i++)
-            {
-               $(".keywords:eq("+i+")").css("background-color","white");
-            }
+
+    
+    function listColorInit(){
+        for(var i=0; i<$(".keywords").length; i++)
+        {
+           $(".keywords:eq("+i+")").css("background-color","white");
         }
+    }
     
     $("#search_keywords").mouseover(function(e){
         $(e.target).css("background-color",mouseoverColor);
