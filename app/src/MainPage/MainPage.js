@@ -9,19 +9,21 @@ const body= {
 }
 const listContainer = {
     border: "1px solid #000000", width: "210px",
-    height: "auto", display: "flex", flexDirection: "column", display:"none"
+    height: "auto", flexDirection: "column", display:"none"
 }
 const keywordBox = {
     marginBlockEnd: "0", marginBlockStart: "0",
-    paddingTop : "10px", paddingBottom: "10px", paddingLeft: "3px"
+    paddingTop : "10px", paddingBottom: "10px", paddingLeft: "3px",
+    cursor :"pointer", backgroundColor: "#ffffff"
 }
 const Keyword = [];
 let keywordList = [];
-
+let listIndex=-1;
 
 function MainPage() {
     const [SearchCommend, setSearchCommend] = useState("")
     const onSearchHandler = (event) => {
+        console.log("ㅇㅇ")
         setSearchCommend(event.currentTarget.value)
         let SearchValue = event.currentTarget.value;
         Keyword.splice(0, Keyword.length);
@@ -40,12 +42,34 @@ function MainPage() {
     }
 
     const onBlurHandler = (event) => {
-        console.log(event.relatedtarget)
-        if(event.relatedtarget===undefined)
+        console.log(event.relatedTarget)
+        if(event.relatedTarget===null)
         {
             document.getElementById("keywordContainer").style.display="none"
         }
         
+    }
+    const onClickHandler = (event) => {
+        console.log(event.target)
+        document.getElementById("input").value=event.target.innerText
+        document.getElementById("search").submit()
+    }
+    const onInputHandler = (e) => {
+        console.log("input")
+        console.log(e.key)
+        if(e.key==="ArrowDown")
+        {
+            if(listIndex==document.querySelectorAll("p").length-1)
+            {
+                listIndex=0
+            }
+            else
+            {
+                listIndex++
+            }
+            document.querySelectorAll("p")[listIndex].focus()
+            document.getElementById("input").value=document.querySelectorAll("p")[listIndex].innerText
+        }
     }
 
     function FindEqualKeyword(input){
@@ -69,11 +93,12 @@ function MainPage() {
         <div style={body}>
             <div style={{display: "flex"}}>
                 <form id="search" action="https://www.google.com/search" method="get">
-                    <input name="q" type="search" placeholder="Google검색 또는 URL입력" id="input" value={SearchCommend} onChange={onSearchHandler} onBlur={onBlurHandler} autoComplete="off"/>
+                    <input name="q" type="search" placeholder="Google검색 또는 URL입력" id="input" value={SearchCommend} 
+                    onChange={onSearchHandler} onBlur={onBlurHandler} onKeyDown={onInputHandler} autoComplete="off"/>
                 </form>
             <button type="submit" onClick={onSubmitHandler}>검색</button>
             </div>
-            <div id="keywordContainer" style={listContainer} tabIndex={0} >
+            <div id="keywordContainer" style={listContainer} tabIndex={0} onClick={onClickHandler} >
                 {keywordList}
             </div>    
         </div>
