@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import keywords from '../keyword/keyword'
 //import { Axios } from 'axios'
 //import { PromiseProvider } from 'mongoose';
@@ -9,11 +9,14 @@ const body= {
 }
 const listContainer = {
     border: "1px solid #000000", width: "210px",
-    height: "auto", display: "flex", flexDirection: "column"
+    height: "auto", display: "flex", flexDirection: "column", display:"none"
 }
-
+const keywordBox = {
+    marginBlockEnd: "0", marginBlockStart: "0",
+    paddingTop : "10px", paddingBottom: "10px", paddingLeft: "3px"
+}
 const Keyword = [];
-let keywordList;
+let keywordList = [];
 
 
 function MainPage() {
@@ -26,17 +29,23 @@ function MainPage() {
         {
             FindEqualKeyword(SearchValue)
         }
+        else
+        {
+            document.getElementById("keywordContainer").style.display="none"
+        }
     }
-    keywordList = Keyword.map((keyword, index) => <p key={index}>{keyword}</p>)
     
     const onSubmitHandler = (event) => {
         document.getElementById("search").submit()
     }
 
-    const onBlurHandler = () => {
-        console.log("dd")
-        console.log(Keyword)
-        Keyword.splice(0, Keyword.length);
+    const onBlurHandler = (event) => {
+        console.log(event.relatedtarget)
+        if(event.relatedtarget===undefined)
+        {
+            document.getElementById("keywordContainer").style.display="none"
+        }
+        
     }
 
     function FindEqualKeyword(input){
@@ -45,11 +54,17 @@ function MainPage() {
             
             if(keywords[i].keyword.toUpperCase().indexOf(input.toUpperCase())===0)
             {
+                document.getElementById("keywordContainer").style.display=""
                 Keyword.push(keywords[i].keyword)
             }
+            
         }
+        
     }
-    
+
+
+    keywordList = Keyword.map((keyword, index) => <p key={index} style={keywordBox}>{keyword}</p>)
+        
     return (
         <div style={body}>
             <div style={{display: "flex"}}>
@@ -58,7 +73,7 @@ function MainPage() {
                 </form>
             <button type="submit" onClick={onSubmitHandler}>검색</button>
             </div>
-            <div id="keywordContainer" style={listContainer} >
+            <div id="keywordContainer" style={listContainer} tabIndex={0} >
                 {keywordList}
             </div>    
         </div>
