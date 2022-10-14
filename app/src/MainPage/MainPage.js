@@ -1,18 +1,34 @@
 import React, { useState } from 'react'
 import keywords from '../keyword/keyword'
-
+import micIcon from "../image/mic_icon.png"
+import searchIcon from "../image/search_icon.png"
 const body = {
     display: "flex", justifyContent: "flex-start", alignItems: "center",
     width: "100%", height: "100vh", flexDirection: "column", position: "fixed", top: "45%"
 }
 const listContainer = {
-    border: "1px solid #000000", width: "330px",
-    height: "auto", flexDirection: "column", display: "none", fontSize: "14px"
+    width: "400px", boxShadow: "0 3px 4px #9e9e9e",
+    height: "auto", flexDirection: "column", display: "none", fontSize: "14px",
+    border: "1px solid #aaaaaa", borderTop: "0px",position: "relative",
+    left: "5px" 
+    
 }
 const keywordBox = {
     marginBlockEnd: "0", marginBlockStart: "0",
-    paddingTop: "10px", paddingBottom: "10px", paddingLeft: "3px",
-    cursor: "pointer", backgroundColor: "#ffffff"
+    paddingTop: "10px", paddingBottom: "10px", paddingLeft: "5px",
+    cursor: "pointer", backgroundColor: "#ffffff", paddingInlineStart: "44px"
+}
+const inputBox = {
+    width: "402px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"14px",
+    borderRadius: "22px", border: "1px solid #aaaaaa", outline: "none", boxShadow: "0 0 4px #9e9e9e", position: "relative",
+    left: "31px"
+
+}
+const micImg = {
+    width: "30px", height: "30px", position: "relative", top: "10px", right: "30px"
+}
+const searchImg = {
+    width: "22px", height: "22px", position: "relative", top: "7px", right: "360px"
 }
 const Keyword = [];
 let keywordList = [];
@@ -31,16 +47,17 @@ function MainPage() {
             document.getElementById("keywordContainer").style.display = "none"
         }
 
-    }
+        if(Keyword.length===0)
+        {
+            removeKeywordContainer()
+        }
 
-    const onSubmitHandler = (event) => {
-        document.getElementById("search").submit()
     }
 
     const onBlurHandler = (event) => {
         //console.log(event.relatedTarget)
         if (event.relatedTarget === null) {
-            document.getElementById("keywordContainer").style.display = "none"
+            removeKeywordContainer()
         }
 
     }
@@ -84,6 +101,21 @@ function MainPage() {
     const onMouseLeaveHandler = (e) => {
         e.target.style.backgroundColor = "#ffffff"
     }
+    function removeKeywordContainer()
+    {
+        document.getElementById("keywordContainer").style.display = "none"
+        document.getElementById("input").style.borderRadius="22px"
+        document.getElementById("input").style.borderBottom="1px solid #aaaaaa"
+    }
+    function setKeywordContainer()
+    {
+        document.getElementById("keywordContainer").style.display = ""
+        document.getElementById("input").style.borderBottom="0px"
+        document.getElementById("input").style.borderTopLeftRadius="7px"
+        document.getElementById("input").style.borderTopRightRadius="7px"
+        document.getElementById("input").style.borderBottomLeftRadius="0px"
+        document.getElementById("input").style.borderBottomRightRadius="0px"
+    }
 
     function keywordBoxColorInit()
     {  
@@ -97,7 +129,7 @@ function MainPage() {
         for (var i = 0; i < keywords.length; i++) {
 
             if (keywords[i].keyword.toUpperCase().indexOf(input.toUpperCase()) === 0) {
-                document.getElementById("keywordContainer").style.display = ""
+                setKeywordContainer()
                 Keyword.push(keywords[i].keyword)
             }
 
@@ -115,9 +147,13 @@ function MainPage() {
         <div style={body}>
             <div style={{ display: "flex" }}>
                 <form id="search" action="https://www.google.com/search" method="get">
-                    <input name="q" type="search" placeholder="Google검색 또는 URL입력" spellCheck="false" id="input" value={SearchCommend}
-                        onChange={onSearchHandler} onBlur={onBlurHandler} onKeyDown={onInputHandler} autoComplete="off"
-                        style={{ width: "330px", height: "30px" }} />
+                    <div>
+                        <input name="q" type="search" placeholder="Google검색 또는 URL입력" spellCheck="false" id="input" value={SearchCommend}
+                            onChange={onSearchHandler} onBlur={onBlurHandler} onKeyDown={onInputHandler} autoComplete="off"
+                            style={inputBox} />
+                        <img src={searchIcon} style={searchImg}/>
+                        <img src={micIcon} style={micImg} />
+                    </div>
                 </form>
             </div>
             <div id="keywordContainer" style={listContainer} tabIndex={0} onClick={onClickHandler} >
