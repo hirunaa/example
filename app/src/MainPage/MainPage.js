@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import keywords from '../keyword/keyword'
-//import { Axios } from 'axios'
-//import { PromiseProvider } from 'mongoose';
-//import {useDispatch} from 'react-redux'
+
 const body= {
     display: "flex", justifyContent: "flex-start", alignItems: "center",
     width: "100%", height: "100vh", flexDirection: "column", position:"absolute", top: "45%"
@@ -59,7 +57,7 @@ function MainPage() {
         console.log(e.key)
         if(e.key==="ArrowDown")
         {
-            if(listIndex==document.querySelectorAll("p").length-1)
+            if(listIndex===document.querySelectorAll("p").length-1)
             {
                 listIndex=0
             }
@@ -69,6 +67,20 @@ function MainPage() {
             }
             document.querySelectorAll("p")[listIndex].focus()
             document.getElementById("input").value=document.querySelectorAll("p")[listIndex].innerText
+        }
+        else if(e.key==="ArrowUp")
+        {
+            if(listIndex===0)
+            {
+                listIndex=document.querySelectorAll("p").length-1
+            }
+            else
+            {
+                listIndex--
+            }
+            document.querySelectorAll("p")[listIndex].focus()
+            document.getElementById("input").value=document.querySelectorAll("p")[listIndex].innerText
+            e.preventDefault();
         }
     }
 
