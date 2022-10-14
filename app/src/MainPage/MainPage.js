@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import keywords from '../keyword/keyword'
 import micIcon from "../image/mic_icon.png"
 import searchIcon from "../image/search_icon.png"
+import ChromeLogo from "../image/logo.png"
 const body = {
     display: "flex", justifyContent: "flex-start", alignItems: "center",
-    width: "100%", height: "100vh", flexDirection: "column", position: "fixed", top: "45%"
+    width: "100%", height: "100vh", flexDirection: "column", position: "fixed", top: "30%"
 }
 const listContainer = {
-    width: "400px", boxShadow: "0 3px 4px #9e9e9e",
+    width: "450px", boxShadow: "0 3px 4px #9e9e9e",
     height: "auto", flexDirection: "column", display: "none", fontSize: "14px",
     border: "1px solid #aaaaaa", borderTop: "0px",position: "relative",
     left: "6px" 
@@ -19,7 +20,7 @@ const keywordBox = {
     cursor: "pointer", backgroundColor: "#ffffff", paddingInlineStart: "44px"
 }
 const inputBox = {
-    width: "402px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"14px",
+    width: "452px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"14px",
     borderRadius: "22px", border: "1px solid #aaaaaa", outline: "none", boxShadow: "0 0 4px #9e9e9e", position: "relative",
     left: "30px", marginRight: "0"
 
@@ -28,8 +29,12 @@ const micImg = {
     width: "30px", height: "30px", position: "relative", top: "10px", right: "26px"
 }
 const searchImg = {
-    width: "17px", height: "17px", position: "relative", top: "4px", right: "360px"
+    width: "17px", height: "17px", position: "relative", top: "4px", right: "410px"
 }
+const ChromeImg = {
+    width :"300px", marginBottom: "50px", marginTop: "50px"
+}
+
 const Keyword = [];
 let keywordList = [];
 let listIndex = -1;
@@ -145,14 +150,15 @@ function MainPage() {
 
     return (
         <div style={body}>
+            <div><img src={ChromeLogo} style={ChromeImg} alt=""/></div>
             <div style={{ display: "flex" }}>
                 <form id="search" action="https://www.google.com/search" method="get">
                     <div>
                         <input name="q" type="search" placeholder="Google검색 또는 URL입력" spellCheck="false" id="input" value={SearchCommend}
                             onChange={onSearchHandler} onBlur={onBlurHandler} onKeyDown={onInputHandler} autoComplete="off"
                             style={inputBox} />
-                        <img src={searchIcon} style={searchImg}/>
-                        <img src={micIcon} style={micImg} />
+                        <img src={searchIcon} style={searchImg} alt="" />
+                        <img src={micIcon} style={micImg} alt="" />
                     </div>
                 </form>
             </div>
