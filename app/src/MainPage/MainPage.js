@@ -3,11 +3,11 @@ import keywords from '../keyword/keyword'
 
 const body= {
     display: "flex", justifyContent: "flex-start", alignItems: "center",
-    width: "100%", height: "100vh", flexDirection: "column", position:"absolute", top: "45%"
+    width: "100%", height: "100vh", flexDirection: "column", position:"fixed", top: "45%"
 }
 const listContainer = {
-    border: "1px solid #000000", width: "210px",
-    height: "auto", flexDirection: "column", display:"none"
+    border: "1px solid #000000", width: "330px",
+    height: "auto", flexDirection: "column", display:"none", fontSize: "14px"
 }
 const keywordBox = {
     marginBlockEnd: "0", marginBlockStart: "0",
@@ -21,7 +21,6 @@ let listIndex=-1;
 function MainPage() {
     const [SearchCommend, setSearchCommend] = useState("")
     const onSearchHandler = (event) => {
-        console.log("ㅇㅇ")
         setSearchCommend(event.currentTarget.value)
         let SearchValue = event.currentTarget.value;
         Keyword.splice(0, Keyword.length);
@@ -33,6 +32,7 @@ function MainPage() {
         {
             document.getElementById("keywordContainer").style.display="none"
         }
+
     }
     
     const onSubmitHandler = (event) => {
@@ -48,13 +48,13 @@ function MainPage() {
         
     }
     const onClickHandler = (event) => {
-        console.log(event.target)
+        //console.log(event.target)
         document.getElementById("input").value=event.target.innerText
         document.getElementById("search").submit()
     }
     const onInputHandler = (e) => {
-        console.log("input")
-        console.log(e.key)
+        //console.log("input")
+        //console.log(e.key)
         if(e.key==="ArrowDown")
         {
             if(listIndex===document.querySelectorAll("p").length-1)
@@ -83,6 +83,12 @@ function MainPage() {
             e.preventDefault();
         }
     }
+    const onMouseEnterHandler = (e) => {
+        e.target.style.backgroundColor="#dddddd"
+    }
+    const onMouseLeaveHandler = (e) => {
+        e.target.style.backgroundColor="#ffffff"
+    }
 
     function FindEqualKeyword(input){
         for(var i=0; i<keywords.length; i++)
@@ -99,14 +105,16 @@ function MainPage() {
     }
 
 
-    keywordList = Keyword.map((keyword, index) => <p key={index} style={keywordBox}>{keyword}</p>)
+    keywordList = Keyword.map((keyword, index) => (<p key={index} style={keywordBox} onMouseLeave={onMouseLeaveHandler} 
+    onMouseEnter={onMouseEnterHandler}> {keyword}</p>))
         
     return (
         <div style={body}>
             <div style={{display: "flex"}}>
                 <form id="search" action="https://www.google.com/search" method="get">
-                    <input name="q" type="search" placeholder="Google검색 또는 URL입력" id="input" value={SearchCommend} 
-                    onChange={onSearchHandler} onBlur={onBlurHandler} onKeyDown={onInputHandler} autoComplete="off"/>
+                    <input name="q" type="search" placeholder="Google검색 또는 URL입력" spellCheck="false" id="input" value={SearchCommend} 
+                    onChange={onSearchHandler} onBlur={onBlurHandler} onKeyDown={onInputHandler} autoComplete="off"
+                    style={{width: "300px",height: "30px"}}/>
                 </form>
             <button type="submit" onClick={onSubmitHandler}>검색</button>
             </div>
