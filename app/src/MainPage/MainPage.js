@@ -145,7 +145,7 @@ function MainPage() {
     }
 
 
-    keywordList = Keyword.map((keyword, index) => (<div className='listBox'><p key={index} style={keywordBox}
+    keywordList = Keyword.map((keyword, index) => (<div className='listBox' key={index}><p key={index} style={keywordBox}
         onMouseLeave={onMouseLeaveHandler}
         onMouseEnter={onMouseEnterHandler}
         >{keyword}</p></div>))
