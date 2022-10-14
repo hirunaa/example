@@ -8,7 +8,7 @@ const body = {
     width: "100%", height: "100vh", flexDirection: "column", position: "fixed", top: "30%"
 }
 const listContainer = {
-    width: "453px", boxShadow: "0 3px 4px #9e9e9e",
+    width: "453px", boxShadow: "0 3.3px 4px #9e9e9e",
     height: "auto", flexDirection: "column", display: "none", fontSize: "15px",
     border: "1px solid #aaaaaa", borderTop: "0px",position: "relative",
     left: "7px" 
@@ -17,11 +17,11 @@ const listContainer = {
 const keywordBox = {
     marginBlockEnd: "0", marginBlockStart: "0",
     paddingTop: "10px", paddingBottom: "10px", paddingLeft: "5px",
-    cursor: "pointer", backgroundColor: "#ffffff", paddingInlineStart: "44px"
+    cursor: "pointer", backgroundColor: "", paddingInlineStart: "44px"
 }
 const inputBox = {
     width: "357px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"15px",
-    borderRadius: "22px", border: "1px solid #aaaaaa", outline: "none", boxShadow: "0 0 4px #9e9e9e", position: "relative",
+    borderRadius: "22px", border: "1px solid #aaaaaa", outline: "none", boxShadow: "0 1 4px #9e9e9e", position: "relative",
     left: "30px", marginRight: "0"
 
 }
@@ -82,7 +82,7 @@ function MainPage() {
                 listIndex++
             }
             document.querySelectorAll("p")[listIndex].focus()
-            document.querySelectorAll("p")[listIndex].style.backgroundColor="#cccccc"
+            document.getElementsByClassName("listBox")[listIndex].style.backgroundColor="#cccccc"
             document.getElementById("input").value = document.querySelectorAll("p")[listIndex].innerText
         }
         else if (e.key === "ArrowUp") {
@@ -93,7 +93,7 @@ function MainPage() {
                 listIndex--
             }
             document.querySelectorAll("p")[listIndex].focus()
-            document.querySelectorAll("p")[listIndex].style.backgroundColor="#cccccc"
+            document.getElementsByClassName("listBox")[listIndex].style.backgroundColor="#cccccc"
             document.getElementById("input").value = document.querySelectorAll("p")[listIndex].innerText
             e.preventDefault();
         }
@@ -103,7 +103,7 @@ function MainPage() {
         e.target.style.backgroundColor = "#dddddd"
     }
     const onMouseLeaveHandler = (e) => {
-        e.target.style.backgroundColor = "#ffffff"
+        e.target.style.backgroundColor = ""
     }
     function removeKeywordContainer()
     {
@@ -125,7 +125,7 @@ function MainPage() {
     {  
         for(var i=0; i<document.querySelectorAll("p").length; i++)
         {
-            document.querySelectorAll("p")[i].style.backgroundColor="#ffffff"
+            document.getElementsByClassName("listBox")[i].style.backgroundColor=""
         }
     }
     /**
@@ -145,10 +145,10 @@ function MainPage() {
     }
 
 
-    keywordList = Keyword.map((keyword, index) => (<p key={index} style={keywordBox}
+    keywordList = Keyword.map((keyword, index) => (<div className='listBox'><p key={index} style={keywordBox}
         onMouseLeave={onMouseLeaveHandler}
         onMouseEnter={onMouseEnterHandler}
-        >{keyword}</p>))
+        >{keyword}</p></div>))
 
     return (
         <div style={body}>
