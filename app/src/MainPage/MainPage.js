@@ -62,6 +62,7 @@ function MainPage() {
         //console.log(event.relatedTarget)
         if (event.relatedTarget === null) {
             removeKeywordContainer()
+            listIndex=-1
         }
 
     }
