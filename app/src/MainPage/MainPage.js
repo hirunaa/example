@@ -8,10 +8,10 @@ const body = {
     width: "100%", height: "100vh", flexDirection: "column", position: "fixed", top: "30%"
 }
 const listContainer = {
-    width: "450px", boxShadow: "0 3px 4px #9e9e9e",
+    width: "453px", boxShadow: "0 3px 4px #9e9e9e",
     height: "auto", flexDirection: "column", display: "none", fontSize: "15px",
     border: "1px solid #aaaaaa", borderTop: "0px",position: "relative",
-    left: "6px" 
+    left: "7px" 
     
 }
 const keywordBox = {
@@ -20,7 +20,7 @@ const keywordBox = {
     cursor: "pointer", backgroundColor: "#ffffff", paddingInlineStart: "44px"
 }
 const inputBox = {
-    width: "452px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"15px",
+    width: "357px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"15px",
     borderRadius: "22px", border: "1px solid #aaaaaa", outline: "none", boxShadow: "0 0 4px #9e9e9e", position: "relative",
     left: "30px", marginRight: "0"
 
@@ -156,7 +156,7 @@ function MainPage() {
             <div style={{ display: "flex" }}>
                 <form id="search" action="https://www.google.com/search" method="get">
                     <div>
-                        <input name="q" type="search" placeholder="Google검색 또는 URL입력" spellCheck="false" id="input" value={SearchCommend}
+                        <input name="q" type="text" placeholder="Google검색 또는 URL입력" spellCheck="false" id="input" value={SearchCommend}
                             onChange={onSearchHandler} onBlur={onBlurHandler} onKeyDown={onInputHandler} autoComplete="off"
                             style={inputBox} />
                         <img src={searchIcon} style={searchImg} alt="" />
