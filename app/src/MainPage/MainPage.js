@@ -9,7 +9,7 @@ const body = {
 }
 const listContainer = {
     width: "450px", boxShadow: "0 3px 4px #9e9e9e",
-    height: "auto", flexDirection: "column", display: "none", fontSize: "14px",
+    height: "auto", flexDirection: "column", display: "none", fontSize: "15px",
     border: "1px solid #aaaaaa", borderTop: "0px",position: "relative",
     left: "6px" 
     
@@ -20,21 +20,20 @@ const keywordBox = {
     cursor: "pointer", backgroundColor: "#ffffff", paddingInlineStart: "44px"
 }
 const inputBox = {
-    width: "452px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"14px",
+    width: "452px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"15px",
     borderRadius: "22px", border: "1px solid #aaaaaa", outline: "none", boxShadow: "0 0 4px #9e9e9e", position: "relative",
     left: "30px", marginRight: "0"
 
 }
 const micImg = {
-    width: "30px", height: "30px", position: "relative", top: "10px", right: "26px"
+    width: "30px", height: "30px", position: "relative", top: "8px", right: "26px"
 }
 const searchImg = {
-    width: "17px", height: "17px", position: "relative", top: "4px", right: "410px"
+    width: "17px", height: "17px", position: "relative", top: "3px", right: "410px"
 }
 const ChromeImg = {
     width :"300px", marginBottom: "50px", marginTop: "50px"
 }
-
 const Keyword = [];
 let keywordList = [];
 let listIndex = -1;
@@ -129,7 +128,10 @@ function MainPage() {
             document.querySelectorAll("p")[i].style.backgroundColor="#ffffff"
         }
     }
-
+    /**
+     * 입력받은 단어로 시작되는 키워드를 찾아내는 함수.
+     * @param {String} input 
+     */
     function FindEqualKeyword(input) {
         for (var i = 0; i < keywords.length; i++) {
 

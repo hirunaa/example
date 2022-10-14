@@ -209,31 +209,5 @@ $(document).ready(function () {
     $("#search_keywords").mouseout(function(e){
         $(e.target).css("background-color","transparent");
     });
-    /*
-    $.ajax({ 
-        url:"../test1.csv",
-        type:"GET",
-        success: function(result) {
-            if (result) {
-                alert("success")
-                console.log(result);
-            } else {
-                alert("불러오기 실패"); 
-            }
-        }
-    });
-    */
-    $.ajax({
-        type: 'GET',
-        username: 'admin',
-        password: 'splunk',
-        crossDomain: true,
-        url: 'http://localhost:8089/servicesNS/admin/search/',
-        processData: false,
-        dataType: 'json',
-        success: function(data){
-            console.log('success',data);
-        }
-    })
-//출처: https://ourcstory.tistory.com/161 [불로:티스토리
+
 });
