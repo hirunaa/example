@@ -10,7 +10,7 @@ const listContainer = {
     width: "400px", boxShadow: "0 3px 4px #9e9e9e",
     height: "auto", flexDirection: "column", display: "none", fontSize: "14px",
     border: "1px solid #aaaaaa", borderTop: "0px",position: "relative",
-    left: "5px" 
+    left: "6px" 
     
 }
 const keywordBox = {
@@ -21,14 +21,14 @@ const keywordBox = {
 const inputBox = {
     width: "402px", height: "40px", paddingInlineStart: "44px", paddingInlineEnd: "52px", fontSize:"14px",
     borderRadius: "22px", border: "1px solid #aaaaaa", outline: "none", boxShadow: "0 0 4px #9e9e9e", position: "relative",
-    left: "31px"
+    left: "30px", marginRight: "0"
 
 }
 const micImg = {
-    width: "30px", height: "30px", position: "relative", top: "10px", right: "30px"
+    width: "30px", height: "30px", position: "relative", top: "10px", right: "26px"
 }
 const searchImg = {
-    width: "22px", height: "22px", position: "relative", top: "7px", right: "360px"
+    width: "17px", height: "17px", position: "relative", top: "4px", right: "360px"
 }
 const Keyword = [];
 let keywordList = [];
