@@ -41,6 +41,7 @@ let listIndex = -1;
 function MainPage() {
     const [SearchCommend, setSearchCommend] = useState("")
     const onSearchHandler = (event) => {
+        listIndex = -1;
         setSearchCommend(event.currentTarget.value)
         let SearchValue = event.currentTarget.value;
         Keyword.splice(0, Keyword.length);
