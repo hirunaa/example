@@ -74,30 +74,39 @@ function MainPage() {
     }
     const onInputHandler = (e) => {
         //console.log("input")
-        //console.log(e.key)
+        console.log(e.key)
         keywordBoxColorInit()
-        if (e.key === "ArrowDown") {
-            if (listIndex === document.querySelectorAll("p").length - 1) {
-                listIndex = 0
+        if(document.getElementsByClassName("listBox").length!==0)
+        {
+            setKeywordContainer()
+            if (e.key === "ArrowDown") {
+                if (listIndex === document.querySelectorAll("p").length - 1) {
+                    listIndex = 0
+                }
+                else {
+                    listIndex++
+                }
+                document.querySelectorAll("p")[listIndex].focus()
+                document.getElementsByClassName("listBox")[listIndex].style.backgroundColor="#cccccc"
+                document.getElementById("input").value = document.querySelectorAll("p")[listIndex].innerText
             }
-            else {
-                listIndex++
+            else if (e.key === "ArrowUp") {
+                if (listIndex === 0) {
+                    listIndex = document.querySelectorAll("p").length - 1
+                }
+                else {
+                    listIndex--
+                }
+                document.querySelectorAll("p")[listIndex].focus()
+                document.getElementsByClassName("listBox")[listIndex].style.backgroundColor="#cccccc"
+                document.getElementById("input").value = document.querySelectorAll("p")[listIndex].innerText
+                e.preventDefault();
             }
-            document.querySelectorAll("p")[listIndex].focus()
-            document.getElementsByClassName("listBox")[listIndex].style.backgroundColor="#cccccc"
-            document.getElementById("input").value = document.querySelectorAll("p")[listIndex].innerText
-        }
-        else if (e.key === "ArrowUp") {
-            if (listIndex === 0) {
-                listIndex = document.querySelectorAll("p").length - 1
+            else if(e.key==="Escape")
+            {
+                setSearchCommend("")
+                removeKeywordContainer()
             }
-            else {
-                listIndex--
-            }
-            document.querySelectorAll("p")[listIndex].focus()
-            document.getElementsByClassName("listBox")[listIndex].style.backgroundColor="#cccccc"
-            document.getElementById("input").value = document.querySelectorAll("p")[listIndex].innerText
-            e.preventDefault();
         }
     }
 
@@ -109,6 +118,7 @@ function MainPage() {
     }
     function removeKeywordContainer()
     {
+        Keyword.splice(0, Keyword.length);
         document.getElementById("keywordContainer").style.display = "none"
         document.getElementById("input").style.borderRadius="22px"
         document.getElementById("input").style.borderBottom="1px solid #aaaaaa"
